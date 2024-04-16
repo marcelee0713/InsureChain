@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "insurechain_backend": {
+      "build": "npx azle insurechain_backend",
+      "candid": "src/insurechain_backend/insurechain_backend.did",
+      "gzip": true,
+      "main": "src/insurechain_backend/src/index.ts",
+      "type": "custom",
+      "wasm": ".azle/insurechain_backend/insurechain_backend.wasm"
+    },
+    "insurechain_frontend": {
+      "dependencies": [
+        "insurechain_backend"
+      ],
+      "source": [
+        "src/insurechain_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "insurechain_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
