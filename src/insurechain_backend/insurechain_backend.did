@@ -2,6 +2,7 @@ service: () -> {
     createChallenge: (text, text, text, text, text) -> ();
     createInsurance: (text, text, text) -> ();
     gainToken: (text, text) -> ();
+    getAllChallenges: () -> (text) query;
     getAllUsers: () -> (text) query;
     getInsurances: () -> (text) query;
     signIn: (text, text) -> (text);

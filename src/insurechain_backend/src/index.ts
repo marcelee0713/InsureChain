@@ -8,12 +8,14 @@ import { insuranceType } from "./types/insurance.types";
 import {
   createChallenge,
   createInsurance,
+  getAllChallengesFromInsurance,
   updateChallengeStatus,
 } from "./utils/insurance.persistence";
-import { newChallenges } from "./constants/insurance.constants";
+import insuranceData from "./constants/insurance.constants";
+import { usersData } from "./constants/user.constants";
 
-let usersDb: userType[] = [];
-let insuranceDb: insuranceType[] = [];
+let usersDb: userType[] = usersData;
+let insuranceDb: insuranceType[] = insuranceData;
 
 export default Canister({
   signUp: update(
@@ -29,6 +31,7 @@ export default Canister({
           password: await hashPassword(password),
           email: email,
           token: "0",
+          createdAt: Date.now().toString(),
         };
 
         usersDb.push(res);
@@ -92,7 +95,7 @@ export default Canister({
           insuranceName,
           description,
           imageUrl,
-          newChallenges,
+          [],
           insuranceDb
         );
       } catch (err) {
@@ -127,6 +130,10 @@ export default Canister({
       }
     }
   ),
+
+  getAllChallenges: query([], text, () => {
+    return JSON.stringify(getAllChallengesFromInsurance(insuranceDb));
+  }),
 
   gainToken: update(
     [text, text],

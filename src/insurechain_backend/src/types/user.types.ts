@@ -4,6 +4,7 @@ export type userType = {
   email: string;
   password: string;
   token: string;
+  createdAt: string;
 };
 
 export type userOnDbType = {
