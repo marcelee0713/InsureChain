@@ -80,6 +80,7 @@ const createInsurance = async (
       name: insuranceName,
       description,
       image,
+      createdAt: Date.now().toString(),
       challenges: challenges.map((challenge) => ({
         ...challenge,
         challengesId: generateUID(),
@@ -127,6 +128,7 @@ const createChallenge = async (
       challenge,
       tokenPrize,
       claimedUsers: [],
+      createdAt: Date.now().toString(),
     };
 
     insurance.challenges.push(newChallenge);

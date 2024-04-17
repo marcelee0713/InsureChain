@@ -4,6 +4,7 @@ export type insuranceType = {
   description: string;
   image: string;
   challenges: challengesType[];
+  createdAt: string;
 };
 
 export type challengesType = {
@@ -13,4 +14,5 @@ export type challengesType = {
   challenge: string;
   tokenPrize: string;
   claimedUsers: string[];
+  createdAt: string;
 };

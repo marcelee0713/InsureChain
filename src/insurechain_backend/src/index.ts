@@ -29,6 +29,7 @@ export default Canister({
           password: await hashPassword(password),
           email: email,
           token: "0",
+          createdAt: Date.now().toString(),
         };
 
         usersDb.push(res);
