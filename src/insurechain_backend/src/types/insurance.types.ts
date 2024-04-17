@@ -9,6 +9,7 @@ export type insuranceType = {
 
 export type challengesType = {
   challengesId: string;
+  insuranceId: string;
   name: string;
   description: string;
   challenge: string;

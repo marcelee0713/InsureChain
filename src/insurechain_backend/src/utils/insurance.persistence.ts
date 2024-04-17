@@ -62,16 +62,8 @@ const createInsurance = async (
   insuranceDb: insuranceType[]
 ): Promise<void> => {
   try {
-    if (
-      !insuranceName ||
-      !description ||
-      !image ||
-      !challenges ||
-      challenges.length === 0
-    ) {
-      throw new Error(
-        "Invalid parameters. insuranceName, description, image, and challenges must be provided."
-      );
+    if (!insuranceName || !description || !image) {
+      throw new Error("Invalid parameters. insuranceName, description, image");
     }
 
     const insuranceId = generateUID();
@@ -123,6 +115,7 @@ const createChallenge = async (
     const challengeId = generateUID();
     const newChallenge: challengesType = {
       challengesId: challengeId,
+      insuranceId: insuranceId,
       name,
       description,
       challenge,
@@ -141,4 +134,24 @@ const createChallenge = async (
   }
 };
 
-export { updateChallengeStatus, createInsurance, createChallenge };
+const getAllChallengesFromInsurance = (
+  insuranceDb: insuranceType[]
+): challengesType[] => {
+  const allChallenges: challengesType[] = [];
+
+  // Loop through each insurance company and extract challenges
+  insuranceDb.forEach((insurance) => {
+    insurance.challenges.forEach((challenge) => {
+      allChallenges.push(challenge);
+    });
+  });
+
+  return allChallenges;
+};
+
+export {
+  updateChallengeStatus,
+  createInsurance,
+  createChallenge,
+  getAllChallengesFromInsurance,
+};
