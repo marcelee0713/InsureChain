@@ -10,7 +10,6 @@ import {
   createInsurance,
   updateChallengeStatus,
 } from "./repositories/insurance.persistence";
-import { newChallenges } from "./constants/insurance.constants";
 import { gainTokenBody, signInBody, signUpBody } from "./records/user.records";
 import {
   createChallengeBody,
@@ -32,6 +31,7 @@ export default Canister({
         password: await hashPassword(req.password),
         email: req.email,
         token: "0",
+        createdAt: Date.now().toString(),
       };
 
       usersDb.push(res);
