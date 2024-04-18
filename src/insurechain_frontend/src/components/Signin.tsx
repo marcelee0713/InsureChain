@@ -33,7 +33,7 @@ const Signin = () => {
             Sign in
           </button>
           <hr className="border-secondary" />
-          <Link to="Signup" className="w-full h-full">
+          <Link to="Warning" className="w-full h-full">
             <button
               type="button"
               className="border-secondary font-bold rounded-lg border py-3 my-5 w-full hover:bg-black hover:text-primary"

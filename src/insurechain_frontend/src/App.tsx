@@ -5,6 +5,9 @@ import LandingPage from "./pages/LandingPage";
 import SignIn from "./components/Signin";
 import SigninLayout from "./layouts/SigninLayout";
 import Signup from "./components/Signup";
+import Error from "./components/Error";
+import Warning from "./components/Warning";
+import Success from "./components/Success";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
             <Route path="/registerlayout" element={<SigninLayout />}>
               <Route index element={<SignIn />} />
               <Route path="signup" element={<Signup />} />
+              <Route path="error" element={<Error/>}/>
+              <Route path="warning" element={<Warning/>}/>
+              <Route path="success" element={<Success/>}/>
             </Route>
           </Route>
         </Routes>
