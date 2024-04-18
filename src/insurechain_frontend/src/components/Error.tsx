@@ -27,7 +27,7 @@ const Error = () => {
             No
           </button>
         </Link>
-      </div>
+      </div>  
     </div>
   );
 };
