@@ -1,5 +1,5 @@
 import { challengesType, insuranceType } from "../types/insurance.types";
-import { generateUID } from "./uid.generator";
+import { generateUID } from "../utils/uid.generator";
 
 const updateChallengeStatus = async (
   userId: string,
