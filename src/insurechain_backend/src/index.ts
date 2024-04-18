@@ -16,9 +16,11 @@ import {
   updateChallengeBody,
 } from "./records/challenge.records";
 import { createInsuranceBody } from "./records/insurance.records";
+import { usersData } from "./constants/user.constants";
+import insuranceData from "./constants/insurance.constants";
 
-let usersDb: userType[] = [];
-let insuranceDb: insuranceType[] = [];
+let usersDb: userType[] = usersData;
+let insuranceDb: insuranceType[] = insuranceData;
 
 export default Canister({
   signUp: update([signUpBody], Void, async (req) => {
