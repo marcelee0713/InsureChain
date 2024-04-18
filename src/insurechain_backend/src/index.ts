@@ -56,7 +56,7 @@ export default Canister({
         throw new Error(err.message);
       }
 
-      throw new Error("User name or password is invalid!");
+      throw new Error("Internal server error");
     }
   }),
 

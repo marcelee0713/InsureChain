@@ -62,16 +62,11 @@ const validateUserData = (
 
 const validateExistence = (
   inputUsername: string,
-  inputPassword: string,
   usersDb: userType[]
 ): userOnDbType => {
   const user = usersDb.find((user) => user.username === inputUsername);
   if (!user) {
     throw new Error("User not found.");
-  }
-
-  if (user.password !== inputPassword) {
-    throw new Error("Username or password is invalid.");
   }
 
   const obj: userOnDbType = {
@@ -115,9 +110,11 @@ const validateLogin = async (
     validateUsername(username);
     validatePassword(password);
 
-    const user = validateExistence(username, password, usersDb);
+    const user = validateExistence(username, usersDb);
 
-    comparePasswords(password, user.password);
+    const valid = await comparePasswords(password, user.password);
+
+    if (!valid) throw new Error("User name or password is invalid!");
 
     return user.uid;
   } catch (err) {
