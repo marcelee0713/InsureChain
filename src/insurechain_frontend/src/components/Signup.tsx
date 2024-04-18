@@ -46,12 +46,14 @@ const Signup = () => {
               Already Have an Account?
             </p>
           </Link>
-          <button
-            type="button"
-            className="bg-black text-primary font-bold py-3 rounded-lg my-5 hover:bg-secondary hover:text-primary"
-          >
-            Sign Up
-          </button>
+          <Link to="/registerlayout/success" className="w-full">
+            <button
+              type="button"
+              className="bg-black text-primary w-full font-bold py-3 rounded-lg my-5 hover:bg-secondary hover:text-primary"
+            >
+              Sign Up
+            </button>
+          </Link>
           <hr className="border-secondary" />
           <p className="text-xs py-4">
             By creating an account you agree to our{" "}
