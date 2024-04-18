@@ -1,47 +1,26 @@
-import { FormEvent, useState } from "react";
-import { insurechain_backend } from "../../declarations/insurechain_backend";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
+// import Signin from './components/Signin';
+import LandingPage from "./pages/LandingPage";
+import SignIn from "./components/Signin";
+import SigninLayout from "./layouts/SigninLayout";
+import Signup from "./components/Signup";
 
 function App() {
-  const [greeting, setGreeting] = useState("");
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): boolean => {
-    event.preventDefault();
-
-    const userName = event.currentTarget.elements.namedItem(
-      "name"
-    ) as HTMLInputElement;
-    const password = event.currentTarget.elements.namedItem(
-      "password"
-    ) as HTMLInputElement;
-
-    console.log("user value: " + userName.value);
-    console.log("user paswrd: " + password.value);
-
-    insurechain_backend
-      .signIn({ username: userName.value, password: password.value })
-      .then((res: any) => {
-        setGreeting(res);
-      });
-
-    return false;
-  };
-
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter username: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <label htmlFor="password">Enter password: &nbsp;</label>
-        <input id="password" alt="password" type="text" />
-        <button className="bg-black text-stone-800" type="submit">
-          Click Me!!!!
-        </button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<LandingPage />} />
+            <Route path="/registerlayout" element={<SigninLayout />}>
+              <Route index element={<SignIn />} />
+              <Route path="signup" element={<Signup />} />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 export default App;
