@@ -9,7 +9,7 @@ const HomeLayout = () => {
                 <Outlet />
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default HomeLayout
+export default HomeLayout;
