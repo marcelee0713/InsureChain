@@ -10,28 +10,30 @@ import Warning from "./components/Warning";
 import Success from "./components/Success";
 import HomeLayout from "./layouts/HomeLayout";
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<DefaultLayout />}>
-            <Route index element={<LandingPage />} />
-            <Route path="/registerlayout" element={<SigninLayout />}>
-              <Route index element={<SignIn />} />
-              <Route path="signup" element={<Signup />} />
-              <Route path="error" element={<Error />} />
-              <Route path="warning" element={<Warning />} />
-              <Route path="success" element={<Success />} />
-            </Route>
-          </Route>
-          <Route path="/Home" element={<HomeLayout />}>
-            <Route index element={<Profile/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<DefaultLayout />}>
+                        <Route index element={<LandingPage />} />
+                        <Route path="/registerlayout" element={<SigninLayout />}>
+                            <Route index element={<SignIn />} />
+                            <Route path="signup" element={<Signup />} />
+                            <Route path="error" element={<Error />} />
+                            <Route path="warning" element={<Warning />} />
+                            <Route path="success" element={<Success />} />
+                        </Route>
+                    </Route>
+                    <Route path="/Home" element={<HomeLayout />}>
+                        <Route index element={<Dashboard />} />
+                        <Route path="profile" element={<Profile />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 export default App;

@@ -10,16 +10,17 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: 'Open Sansz', sans-serif;
-  }
-  @layer components{
-    .component-grid{
-      border-width: 2px;
-      border-radius: 0.5rem;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+}
+
+@layer components {
+    .component-grid {
+        border-width: 2px;
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-  }
+}
