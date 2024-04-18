@@ -1,9 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { insurechain_backend } from "../../../declarations/insurechain_backend";
+import { catchErrors } from "../utils/error.catcher";
 
 const Signin = () => {
+  const navigate = useNavigate();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const usernameInput = form.elements.namedItem(
+      "username"
+    ) as HTMLInputElement;
+    const passwordInput = form.elements.namedItem(
+      "password"
+    ) as HTMLInputElement;
+    const usernameValue = usernameInput.value;
+    const passwordValue = passwordInput.value;
+
+    console.log(usernameValue);
+    console.log(passwordValue);
+
+    try {
+      const result = await insurechain_backend.signIn({
+        username: usernameValue,
+        password: passwordValue,
+      });
+
+      localStorage.setItem("session", result);
+      navigate("/Home");
+    } catch (err) {
+      if (err instanceof Error) {
+        // TODO: Show error message here soon!
+        console.log(catchErrors(err));
+      }
+    }
+  };
+
   return (
     <section>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="h-scre bg-boxColor border-secondary border rounded-lg p-[36px] font-openSans flex flex-col lg:min-w-[488px] w-full sm:min-w-[200px] h-full border-opacity-20">
           <label htmlFor="username" className="font-semibold my-1 text-black">
             Username
@@ -27,7 +61,7 @@ const Signin = () => {
             Forgot password?
           </p>
           <button
-            type="button"
+            type="submit"
             className="bg-black text-primary font-bold py-3 rounded-lg my-5 hover:bg-secondary hover:text-primary "
           >
             Sign in
