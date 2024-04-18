@@ -36,7 +36,9 @@ function App() {
         <input id="name" alt="Name" type="text" />
         <label htmlFor="password">Enter password: &nbsp;</label>
         <input id="password" alt="password" type="text" />
-        <button type="submit">Click Me!!!!</button>
+        <button className="bg-black text-stone-800" type="submit">
+          Click Me!!!!
+        </button>
       </form>
       <section id="greeting">{greeting}</section>
     </main>
