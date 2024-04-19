@@ -2,18 +2,16 @@ import { Outlet } from "react-router-dom";
 
 const SigninLayout = () => {
   return (
-    <section>
-      <div className="flex justify-center items-center bg-primary">
-        <div className="mx-16">
-          <h1 className="text-black text-[50px] font-bold">InsureChain</h1>
-          <p className="text-black">
-            Earn insurance coverage by completing challenges on blockchain.
-          </p>
-        </div>
-        <div className="mx-16">
-          <Outlet />
-        </div>
+    <section className="flex justify-between items-center bg-primary h-full w-full px-16">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-black text-[50px] font-bold font-openSans animate-animfadeLeftSide">
+          InsureChain
+        </h1>
+        <p className="text-black font-openSans animate-animfadeLeftSide">
+          Earn insurance coverage by completing challenges on blockchain.
+        </p>
       </div>
+      <Outlet />
     </section>
   );
 };
