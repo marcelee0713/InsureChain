@@ -1,5 +1,10 @@
 import { Record, text } from "azle";
 
+const challengeBody = Record({
+  insuranceId: text,
+  challengeId: text,
+});
+
 const updateChallengeBody = Record({
   userId: text,
   insuranceId: text,
@@ -14,4 +19,4 @@ const createChallengeBody = Record({
   tokenPrize: text,
 });
 
-export { updateChallengeBody, createChallengeBody };
+export { updateChallengeBody, createChallengeBody, challengeBody };

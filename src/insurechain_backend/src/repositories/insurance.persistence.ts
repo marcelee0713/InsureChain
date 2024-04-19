@@ -149,9 +149,71 @@ const getAllChallengesFromInsurance = (
   return allChallenges;
 };
 
+const getInsurance = async (
+  insuranceId: string,
+  insuranceDb: insuranceType[]
+): Promise<insuranceType> => {
+  try {
+    let insurance: insuranceType | undefined = undefined;
+
+    for (let i = 0; i < insuranceDb.length; i++) {
+      if (insuranceId === insuranceDb[i].insuranceId) {
+        insurance = insuranceDb[i];
+        break;
+      }
+    }
+
+    if (!insurance)
+      throw new Error("The following insurance can not be found!");
+
+    return insurance;
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+
+    throw new Error("Internal server error!");
+  }
+};
+
+const getChallenge = async (
+  insuranceId: string,
+  insuranceDb: insuranceType[],
+  challengeId: string
+): Promise<challengesType> => {
+  try {
+    let challenge: challengesType | undefined = undefined;
+
+    for (let i = 0; i < insuranceDb.length; i++) {
+      if (insuranceId === insuranceDb[i].insuranceId) {
+        for (let j = 0; j < insuranceDb[i].challenges.length; j++) {
+          if (challengeId === insuranceDb[i].challenges[j].challengesId) {
+            challenge = insuranceDb[i].challenges[j];
+            break;
+          }
+        }
+        break;
+      }
+    }
+
+    if (!challenge)
+      throw new Error("The following challenge can not be found!");
+
+    return challenge;
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+
+    throw new Error("Internal server error!");
+  }
+};
+
 export {
   updateChallengeStatus,
   createInsurance,
   createChallenge,
   getAllChallengesFromInsurance,
+  getInsurance,
+  getChallenge,
 };

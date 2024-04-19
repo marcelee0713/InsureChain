@@ -8,18 +8,28 @@ import { insuranceType } from "./types/insurance.types";
 import {
   createChallenge,
   createInsurance,
+  getChallenge,
+  getInsurance,
   updateChallengeStatus,
 } from "./repositories/insurance.persistence";
-import { gainTokenBody, signInBody, signUpBody } from "./records/user.records";
 import {
+  gainTokenBody,
+  signInBody,
+  signUpBody,
+  userBody,
+} from "./records/user.records";
+import {
+  challengeBody,
   createChallengeBody,
   updateChallengeBody,
 } from "./records/challenge.records";
-import { createInsuranceBody } from "./records/insurance.records";
+import {
+  createInsuranceBody,
+  insuranceBody,
+} from "./records/insurance.records";
 import { usersData } from "./constants/user.constants";
 import insuranceData from "./constants/insurance.constants";
-
-import { userBody, insuranceBody, challengeBody } from "./records/task.records";
+import { getUser } from "./repositories/user.persistance";
 
 let usersDb: userType[] = usersData;
 let insuranceDb: insuranceType[] = insuranceData;
@@ -141,12 +151,9 @@ export default Canister({
 
   getUser: query([userBody], text, async (req) => {
     try {
-      const { userId } = req;
-      const userExists = usersDb.some(user => user.uid === userId);
-      if (!userExists) {
-        throw new Error('User not found');
-      }
-      return JSON.stringify({ userId });
+      const user = await getUser(req.userId, usersDb);
+
+      return JSON.stringify(user);
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
@@ -157,12 +164,9 @@ export default Canister({
 
   getInsurance: query([insuranceBody], text, async (req) => {
     try {
-      const { insuranceId } = req;
-      const insuranceExists = insuranceDb.some(insurance => insurance.insuranceId === insuranceId);
-      if (!insuranceExists) {
-        throw new Error('Insurance not found');
-      }
-      return JSON.stringify({ insuranceId });
+      const insuranceObj = await getInsurance(req.insuranceId, insuranceDb);
+
+      return JSON.stringify(insuranceObj);
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
@@ -171,10 +175,14 @@ export default Canister({
     }
   }),
 
-  getChallenge: query([challengeBody], text, async(req) => {
+  getChallenge: query([challengeBody], text, async (req) => {
     try {
-      const { challengeId } = req;
-      return JSON.stringify({ challengeId });
+      const challenge = await getChallenge(
+        req.insuranceId,
+        insuranceDb,
+        req.challengeId
+      );
+      return JSON.stringify(challenge);
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
@@ -182,5 +190,4 @@ export default Canister({
       throw new Error("Internal server error!");
     }
   }),
-
 });
