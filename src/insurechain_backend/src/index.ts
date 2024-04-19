@@ -19,6 +19,8 @@ import { createInsuranceBody } from "./records/insurance.records";
 import { usersData } from "./constants/user.constants";
 import insuranceData from "./constants/insurance.constants";
 
+import { createTaskBody } from "./records/task.records";
+
 let usersDb: userType[] = usersData;
 let insuranceDb: insuranceType[] = insuranceData;
 
@@ -136,4 +138,32 @@ export default Canister({
   getInsurances: query([], text, () => {
     return JSON.stringify(insuranceDb);
   }),
+
+  createTask: query([createTaskBody], text, async(req) => {
+    try {
+      const { userId, insuranceId, challengeId } = req;
+
+      // Check if userId exists in usersDb
+      const userExists = usersDb.some(user => user.uid === userId);
+      if (!userExists) {
+          throw new Error('User not found');
+      }
+
+      const insuranceExists = insuranceDb.some(insurance => insurance.insuranceId === insuranceId);
+      if (!insuranceExists) {
+          throw new Error('Insurance not found');
+      }
+
+      const data = { userId, insuranceId, challengeId };
+
+      return JSON.stringify(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
+
+      throw new Error("Internal server error!");
+    }
+  }),
+
 });
