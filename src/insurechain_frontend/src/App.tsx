@@ -6,6 +6,7 @@ import SigninLayout from "./layouts/SigninLayout";
 import Signup from "./pages/auth/Signup";
 import HomeLayout from "./layouts/HomeLayout";
 import Profile from "./pages/Profile";
+import Challenge from "./pages/Challenge";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
             </Route>
           </Route>
           <Route path="/dashboard" element={<HomeLayout />}>
-            <Route index element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="challenge" element={<Challenge/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
