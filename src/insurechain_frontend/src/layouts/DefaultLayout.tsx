@@ -11,7 +11,7 @@ const DefaultLayout = () => {
       <div className="bg-primary font-openSans h-screen">
         <div className="flex justify-between items-center px-[7rem] mt-3">
           <Link to="/">
-            <img src="/images/ic-ithink-hackathon.png" alt="Logo" />
+            <img src="/images/logo.png" alt="Logo" />
           </Link>
           <Link to={linkPath}>
             <h2 className="text-black font-bold text-center font-bold">

@@ -10,7 +10,7 @@ import Warning from "./components/Warning";
 import Success from "./components/Success";
 import HomeLayout from "./layouts/HomeLayout";
 import Profile from "./pages/Profile";
-
+import Challenge from "./pages/Challenge";
 function App() {
   return (
     <>
@@ -27,7 +27,8 @@ function App() {
             </Route>
           </Route>
           <Route path="/Home" element={<HomeLayout />}>
-            <Route index element={<Profile/>}/>
+            <Route path="profile" element={<Profile />} />
+            <Route path="challenge" element={<Challenge/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
