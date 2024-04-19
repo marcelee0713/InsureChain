@@ -6,4 +6,8 @@ const createInsuranceBody = Record({
   imageUrl: text,
 });
 
-export { createInsuranceBody };
+const insuranceBody = Record({
+  insuranceId: text,
+});
+
+export { createInsuranceBody, insuranceBody };

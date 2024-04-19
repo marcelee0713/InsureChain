@@ -1,5 +1,9 @@
 import { Record, text } from "azle";
 
+const userBody = Record({
+  userId: text,
+});
+
 const signUpBody = Record({
   username: text,
   password: text,
@@ -16,4 +20,4 @@ const gainTokenBody = Record({
   token: text,
 });
 
-export { signUpBody, signInBody, gainTokenBody };
+export { signUpBody, signInBody, gainTokenBody, userBody };
