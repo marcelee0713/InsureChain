@@ -1,9 +1,15 @@
 import { Record, text } from "azle";
 
-const createTaskBody = Record({
+const userBody = Record({
     userId: text,
-    insuranceId: text,
-    challengeId: text,
 });
 
-export{ createTaskBody };
+const insuranceBody = Record({
+    insuranceId: text,
+})
+
+const challengeBody = Record({
+    challengeId: text,
+})
+
+export{ userBody, insuranceBody, challengeBody };

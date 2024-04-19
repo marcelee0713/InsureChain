@@ -19,7 +19,7 @@ import { createInsuranceBody } from "./records/insurance.records";
 import { usersData } from "./constants/user.constants";
 import insuranceData from "./constants/insurance.constants";
 
-import { createTaskBody } from "./records/task.records";
+import { userBody, insuranceBody, challengeBody } from "./records/task.records";
 
 let usersDb: userType[] = usersData;
 let insuranceDb: insuranceType[] = insuranceData;
@@ -139,29 +139,46 @@ export default Canister({
     return JSON.stringify(insuranceDb);
   }),
 
-  createTask: query([createTaskBody], text, async(req) => {
+  getUser: query([userBody], text, async (req) => {
     try {
-      const { userId, insuranceId, challengeId } = req;
-
-      // Check if userId exists in usersDb
+      const { userId } = req;
       const userExists = usersDb.some(user => user.uid === userId);
       if (!userExists) {
-          throw new Error('User not found');
+        throw new Error('User not found');
       }
-
-      const insuranceExists = insuranceDb.some(insurance => insurance.insuranceId === insuranceId);
-      if (!insuranceExists) {
-          throw new Error('Insurance not found');
-      }
-
-      const data = { userId, insuranceId, challengeId };
-
-      return JSON.stringify(data);
+      return JSON.stringify({ userId });
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
       }
+      throw new Error("Internal server error!");
+    }
+  }),
 
+  getInsurance: query([insuranceBody], text, async (req) => {
+    try {
+      const { insuranceId } = req;
+      const insuranceExists = insuranceDb.some(insurance => insurance.insuranceId === insuranceId);
+      if (!insuranceExists) {
+        throw new Error('Insurance not found');
+      }
+      return JSON.stringify({ insuranceId });
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
+      throw new Error("Internal server error!");
+    }
+  }),
+
+  getChallenge: query([challengeBody], text, async(req) => {
+    try {
+      const { challengeId } = req;
+      return JSON.stringify({ challengeId });
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
       throw new Error("Internal server error!");
     }
   }),

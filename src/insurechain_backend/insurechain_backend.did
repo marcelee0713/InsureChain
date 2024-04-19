@@ -1,10 +1,12 @@
 service: () -> {
     createChallenge: (record {challenge:text; tokenPrize:text; insuranceId:text; name:text; description:text}) -> ();
     createInsurance: (record {insuranceName:text; description:text; imageUrl:text}) -> ();
-    createTask: (record {userId:text; insuranceId:text; challengeId:text}) -> (text) query;
     gainToken: (record {token:text; userId:text}) -> ();
     getAllUsers: () -> (text) query;
+    getChallenge: (record {challengeId:text}) -> (text) query;
+    getInsurance: (record {insuranceId:text}) -> (text) query;
     getInsurances: () -> (text) query;
+    getUser: (record {userId:text}) -> (text) query;
     signIn: (record {username:text; password:text}) -> (text);
     signUp: (record {username:text; password:text; email:text}) -> ();
     updateChallenge: (record {userId:text; insuranceId:text; challengeId:text}) -> (text);
