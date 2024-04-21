@@ -19,4 +19,8 @@ const createChallengeBody = Record({
   tokenPrize: text,
 });
 
-export { updateChallengeBody, createChallengeBody, challengeBody };
+const getAvailableChallengesBody = Record({
+  userId: text
+});
+
+export { updateChallengeBody, createChallengeBody, challengeBody, getAvailableChallengesBody };

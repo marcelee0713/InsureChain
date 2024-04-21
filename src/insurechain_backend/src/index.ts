@@ -11,6 +11,7 @@ import {
   getChallenge,
   getInsurance,
   updateChallengeStatus,
+  getAvailableChallenges,
 } from "./repositories/insurance.persistence";
 import {
   gainTokenBody,
@@ -22,6 +23,7 @@ import {
   challengeBody,
   createChallengeBody,
   updateChallengeBody,
+  getAvailableChallengesBody,
 } from "./records/challenge.records";
 import {
   createInsuranceBody,
@@ -183,6 +185,21 @@ export default Canister({
         req.challengeId
       );
       return JSON.stringify(challenge);
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
+      throw new Error("Internal server error!");
+    }
+  }),
+  
+  getAvailableChallenges: query([getAvailableChallengesBody], text, async (req) => {
+    try {
+      const availableChallenges = await getAvailableChallenges(
+        req.userId,
+        insuranceDb
+      );
+      return JSON.stringify(availableChallenges);
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);

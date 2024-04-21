@@ -209,6 +209,36 @@ const getChallenge = async (
   }
 };
 
+const getAvailableChallenges = async (
+  userId: string,
+  insuranceDb: insuranceType[]
+): Promise<challengesType[]> => {
+  try {
+    const availableChallenges: challengesType[] = [];
+
+    insuranceDb.forEach(insurance => {
+      if (insurance.challenges && insurance.challenges.length > 0) {
+        insurance.challenges.forEach(challenge => {
+          const isClaimed = challenge.claimedUsers.includes(userId);
+
+          if (!isClaimed) {
+            availableChallenges.push(challenge);
+          }
+        });
+      }
+    });
+
+    return availableChallenges;
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+
+    throw new Error("Internal server error!");
+  }
+};
+
+
 export {
   updateChallengeStatus,
   createInsurance,
@@ -216,4 +246,5 @@ export {
   getAllChallengesFromInsurance,
   getInsurance,
   getChallenge,
+  getAvailableChallenges,
 };
