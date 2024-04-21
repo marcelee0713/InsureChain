@@ -18,7 +18,7 @@ const insuranceData: insuranceType[] = [
           "Start a healthy habit and track your progress for 30 days.",
         challenge: "Maintain a daily exercise routine for 30 days",
         tokenPrize: "20",
-        claimedUsers: [],
+        claimedUsers: ["olT9lP781LjHLLKS"],
         createdAt: "2024-04-22T00:00:00Z",
       },
     ],
