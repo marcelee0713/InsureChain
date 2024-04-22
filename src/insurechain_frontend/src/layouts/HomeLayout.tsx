@@ -5,11 +5,11 @@ import { Outlet } from "react-router-dom";
 const HomeLayout = () => {
   useEffect(() => {
     // Check if the user is logged in
-    // const isLoggedIn = localStorage.getItem("uid");
-    // if (!isLoggedIn) {
-    //   // Redirect to the dashboard if the user is logged in
-    //   window.location.href = "/auth/sign-in";
-    // }
+    const isLoggedIn = localStorage.getItem("uid");
+    if (!isLoggedIn) {
+      // Redirect to the dashboard if the user is logged in
+      window.location.href = "/auth/sign-in";
+    }
   }, []);
   return (
     <section className="flex">
