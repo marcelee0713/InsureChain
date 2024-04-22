@@ -22,8 +22,9 @@ function App() {
             </Route>
           </Route>
           <Route path="/dashboard" element={<HomeLayout />}>
+            <Route path="home" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="challenge" element={<Challenge/>}/>
+            <Route path="challenge" element={<Challenge />} />
           </Route>
         </Routes>
       </BrowserRouter>

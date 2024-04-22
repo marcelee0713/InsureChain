@@ -17,6 +17,7 @@
     "src/insurechain_frontend"
   ],
   "dependencies": {
-    "azle": "^0.21.1"
+    "azle": "^0.21.1",
+    "react-hook-form": "^7.51.3"
   }
 }

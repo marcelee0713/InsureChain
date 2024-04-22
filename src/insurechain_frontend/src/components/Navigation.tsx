@@ -28,7 +28,7 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              to="/"
+              to="home"
               className={({ isActive }) =>
                 isActive
                   ? "bg-black text-primary flex items-center p-2 hover:bg-secondary group"
@@ -67,7 +67,7 @@ const Navigation = () => {
           <li>
             <NavLink
               to="/logout"
-              className="flex items-center p-2 hover:bg-secondary group bg-black text-primary"
+              className="flex items-center p-2 hover:bg-secondary group  text-black"
             >
               <i className="fa-solid fa-right-from-bracket font-bold flex-shrink-0 w-5 h-5 group-hover:text-primary"></i>
               <span className="flex-1 ms-3 whitespace-nowrap group-hover:text-primary">
