@@ -46,6 +46,9 @@ export default {
           },
         },
       },
+      gridTemplateColumns: {
+        myGridTemplate: "repeat(auto-fit, minmax(400px, 1fr))",
+      },
       fontFamily: {
         openSans: ["Open Sans", "sans-serif"],
       },

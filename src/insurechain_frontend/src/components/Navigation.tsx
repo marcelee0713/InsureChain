@@ -3,8 +3,6 @@ import { FaList } from "react-icons/fa6";
 import { LuLogOut } from "react-icons/lu";
 import { NavigationItems } from "./navigation/nav.items";
 import { MdSpaceDashboard } from "react-icons/md";
-import { KeyedMutator, mutate } from "swr";
-import { User } from "../interfaces/user.interface";
 
 interface props {
   name: string;
@@ -14,7 +12,7 @@ interface props {
 const Navigation = ({ name, onLogOut }: props) => {
   return (
     <aside
-      className="w-64 h-full bg-primary overflow-y-auto border-r-2 border-black border-opacity-70"
+      className="min-w-64 h-full bg-primary overflow-y-auto border-r-2 border-black border-opacity-70"
       aria-label="Sidebar"
     >
       <ul className="h-full flex flex-col gap-2 items-stretch p-2">

@@ -37,9 +37,7 @@ const HomeLayout = () => {
           }}
           name={data.username}
         />
-        <div className="flex-1 container mx-auto">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     );
   }
