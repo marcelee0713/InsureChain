@@ -18,3 +18,7 @@ export const DASHBOARD_DESC = {
   DESC: `Where you can check out the insurance company's challenges and
   contracts!`,
 };
+
+export const CHALLENGES_DESC = {
+  DESC: `See the available challenges that you can start!`,
+};

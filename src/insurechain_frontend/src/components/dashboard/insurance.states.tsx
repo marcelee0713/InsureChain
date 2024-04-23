@@ -1,3 +1,4 @@
+import { InsuranceType } from "../../interfaces/insurance.interface";
 import { AuthLoading } from "../auth/loading";
 import { InsuranceBox } from "./insurance.box";
 import { TbMoodEmptyFilled } from "react-icons/tb";

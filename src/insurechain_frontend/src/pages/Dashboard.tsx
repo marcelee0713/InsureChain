@@ -1,8 +1,9 @@
 import { DASHBOARD_DESC } from "../constants/project.desc";
 import { getInsurances } from "../fetchers/insurance.fetchers";
 import { PageDesciption } from "../components/page.desc";
-import useSWR from "swr";
 import { InsuranceStates } from "../components/dashboard/insurance.states";
+import { InsuranceType } from "../interfaces/insurance.interface";
+import useSWR from "swr";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR<InsuranceType[]>(

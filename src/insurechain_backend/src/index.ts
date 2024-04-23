@@ -80,6 +80,7 @@ export default Canister({
         req.userId,
         req.insuranceId,
         req.challengeId,
+        req.challengeStatus,
         insuranceDb
       );
 
@@ -192,19 +193,23 @@ export default Canister({
       throw new Error("Internal server error!");
     }
   }),
-  
-  getAvailableChallenges: query([getAvailableChallengesBody], text, async (req) => {
-    try {
-      const availableChallenges = await getAvailableChallenges(
-        req.userId,
-        insuranceDb
-      );
-      return JSON.stringify(availableChallenges);
-    } catch (err) {
-      if (err instanceof Error) {
-        throw new Error(err.message);
+
+  getAvailableChallenges: query(
+    [getAvailableChallengesBody],
+    text,
+    async (req) => {
+      try {
+        const availableChallenges = await getAvailableChallenges(
+          req.userId,
+          insuranceDb
+        );
+        return JSON.stringify(availableChallenges);
+      } catch (err) {
+        if (err instanceof Error) {
+          throw new Error(err.message);
+        }
+        throw new Error("Internal server error!");
       }
-      throw new Error("Internal server error!");
     }
-  }),
+  ),
 });

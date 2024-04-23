@@ -12,8 +12,15 @@ export type challengesType = {
   insuranceId: string;
   name: string;
   description: string;
-  challenge: string;
   tokenPrize: string;
-  claimedUsers: string[];
+  userStatus: userStatus[];
   createdAt: string;
 };
+
+export type userStatus = {
+  uid: string;
+  status: challengeStatus; // AVAILABLE ON DEFAULT WHEN USER IS NOT PRESENT
+  finishedAt?: string;
+};
+
+export type challengeStatus = "ON-GOING" | "FINISHED";
