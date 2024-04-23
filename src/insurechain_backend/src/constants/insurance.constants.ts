@@ -17,9 +17,14 @@ const insuranceData: insuranceType[] = [
         name: "Healthy Habits Challenge",
         description:
           "Start a healthy habit and track your progress for 30 days.",
-        challenge: "Maintain a daily exercise routine for 30 days",
         tokenPrize: "20",
-        claimedUsers: ["olT9lP781LjHLLKS"],
+        userStatus: [
+          {
+            uid: "olT9lP781LjHLLKS",
+            status: "FINISHED",
+            finishedAt: Date.now().toString(),
+          },
+        ],
         createdAt: "2024-04-22T00:00:00Z",
       },
     ],
@@ -39,9 +44,8 @@ const insuranceData: insuranceType[] = [
         name: "Defensive Driving Challenge",
         description:
           "Complete an online defensive driving course and pass the final exam.",
-        challenge: "Pass the final exam with a score of 80% or higher",
         tokenPrize: "15",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-23T00:00:00Z",
       },
       {
@@ -50,9 +54,8 @@ const insuranceData: insuranceType[] = [
         name: "Mileage Tracker Challenge",
         description:
           "Track your driving mileage for one month to receive a discount on your premium.",
-        challenge: "Record driving mileage accurately for one month",
         tokenPrize: "10",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-23T00:00:00Z",
       },
     ],
@@ -71,9 +74,8 @@ const insuranceData: insuranceType[] = [
         name: "Adventure Challenge",
         description:
           "Plan and execute an adventure trip and share your experience.",
-        challenge: "Complete a multi-day hiking or camping trip",
         tokenPrize: "25",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-24T00:00:00Z",
       },
     ],
@@ -93,9 +95,8 @@ const insuranceData: insuranceType[] = [
         name: "Pet Wellness Challenge",
         description:
           "Adopt healthy habits for your pet and track their progress.",
-        challenge: "Implement a regular exercise routine for your pet",
         tokenPrize: "15",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-25T00:00:00Z",
       },
       {
@@ -103,9 +104,8 @@ const insuranceData: insuranceType[] = [
         insuranceId: "ins4",
         name: "Pet Photo Contest",
         description: "Share your best pet photos for a chance to win prizes.",
-        challenge: "Submit your cutest pet photo",
         tokenPrize: "10",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-25T00:00:00Z",
       },
     ],
@@ -124,9 +124,8 @@ const insuranceData: insuranceType[] = [
         insuranceId: "ins5",
         name: "Home Safety Challenge",
         description: "Take steps to improve home safety and prevent accidents.",
-        challenge: "Install smoke detectors in every room of your home",
         tokenPrize: "15",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-26T00:00:00Z",
       },
     ],
@@ -146,9 +145,8 @@ const insuranceData: insuranceType[] = [
         name: "Financial Health Challenge",
         description:
           "Create and stick to a budget to improve your financial health.",
-        challenge: "Track your expenses and savings for one month",
         tokenPrize: "20",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-27T00:00:00Z",
       },
       {
@@ -157,9 +155,8 @@ const insuranceData: insuranceType[] = [
         name: "Investment Challenge",
         description:
           "Learn about investing and start building your investment portfolio.",
-        challenge: "Invest a set amount of money in stocks or mutual funds",
         tokenPrize: "10",
-        claimedUsers: [],
+        userStatus: [],
         createdAt: "2024-04-27T00:00:00Z",
       },
     ],

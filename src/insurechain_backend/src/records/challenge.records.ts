@@ -9,6 +9,7 @@ const updateChallengeBody = Record({
   userId: text,
   insuranceId: text,
   challengeId: text,
+  challengeStatus: text,
 });
 
 const createChallengeBody = Record({
@@ -20,7 +21,12 @@ const createChallengeBody = Record({
 });
 
 const getAvailableChallengesBody = Record({
-  userId: text
+  userId: text,
 });
 
-export { updateChallengeBody, createChallengeBody, challengeBody, getAvailableChallengesBody };
+export {
+  updateChallengeBody,
+  createChallengeBody,
+  challengeBody,
+  getAvailableChallengesBody,
+};

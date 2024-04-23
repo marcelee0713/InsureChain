@@ -1,10 +1,15 @@
-import { challengesType, insuranceType } from "../types/insurance.types";
+import {
+  challengesType,
+  insuranceType,
+  userStatus,
+} from "../types/insurance.types";
 import { generateUID } from "../utils/uid.generator";
 
 const updateChallengeStatus = async (
   userId: string,
   insuranceId: string,
   challengesId: string,
+  challengeStatus: string,
   insuranceDb: insuranceType[]
 ): Promise<string> => {
   try {
@@ -36,15 +41,27 @@ const updateChallengeStatus = async (
       );
     }
 
-    console.log(
-      `Challenge '${challenge.name}' completed for user '${userId}' in insurance '${insurance.name}'.`
-    );
+    if (challengeStatus === "FINISHED") {
+      challenge.userStatus.forEach((val) => {
+        if (val.uid === userId && val.status === "ON-GOING") {
+          const index = challenge.userStatus.indexOf(val);
+          challenge.userStatus[index].status === "FINISHED";
+          challenge.userStatus[index].finishedAt = Date.now().toString();
+          return;
+        }
+      });
 
-    if (!challenge.claimedUsers.includes(userId)) {
-      challenge.claimedUsers.push(userId);
+      return challenge.tokenPrize;
     }
 
-    return challenge.tokenPrize;
+    const createStatus: userStatus = {
+      uid: userId,
+      status: "ON-GOING",
+    };
+
+    challenge.userStatus.push(createStatus);
+
+    return "0";
   } catch (err) {
     if (err instanceof Error) {
       throw new Error(err.message);
@@ -118,9 +135,8 @@ const createChallenge = async (
       insuranceId: insuranceId,
       name,
       description,
-      challenge,
       tokenPrize,
-      claimedUsers: [],
+      userStatus: [],
       createdAt: Date.now().toString(),
     };
 
@@ -216,14 +232,16 @@ const getAvailableChallenges = async (
   try {
     const availableChallenges: challengesType[] = [];
 
-    insuranceDb.forEach(insurance => {
+    insuranceDb.forEach((insurance) => {
       if (insurance.challenges && insurance.challenges.length > 0) {
-        insurance.challenges.forEach(challenge => {
-          const isClaimed = challenge.claimedUsers.includes(userId);
+        insurance.challenges.forEach((challenge) => {
+          challenge.userStatus.forEach((user) => {
+            const isClaimed = user.uid === userId;
 
-          if (!isClaimed) {
-            availableChallenges.push(challenge);
-          }
+            if (!isClaimed) {
+              availableChallenges.push(challenge);
+            }
+          });
         });
       }
     });
@@ -237,7 +255,6 @@ const getAvailableChallenges = async (
     throw new Error("Internal server error!");
   }
 };
-
 
 export {
   updateChallengeStatus,

@@ -10,5 +10,5 @@ service: () -> {
     getUser: (record {userId:text}) -> (text) query;
     signIn: (record {username:text; password:text}) -> (text);
     signUp: (record {username:text; password:text; email:text}) -> ();
-    updateChallenge: (record {userId:text; insuranceId:text; challengeId:text}) -> (text);
+    updateChallenge: (record {userId:text; insuranceId:text; challengeStatus:text; challengeId:text}) -> (text);
 }

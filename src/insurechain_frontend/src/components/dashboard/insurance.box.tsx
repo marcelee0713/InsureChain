@@ -1,3 +1,5 @@
+import { ChallengesType } from "../../interfaces/insurance.interface";
+
 interface props {
   insuranceId: string;
   image: string;
@@ -20,8 +22,8 @@ export const InsuranceBox = ({
 
   challenges.forEach((i) => {
     let present = false;
-    i.claimedUsers.forEach((user) => {
-      if (user === uid) {
+    i.userStatus.forEach((user) => {
+      if (user.uid === uid) {
         present = true;
       }
     });
