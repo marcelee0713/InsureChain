@@ -41,7 +41,7 @@ const Signin = () => {
 
     onSuccess(result) {
       localStorage.setItem("uid", result);
-      navigate("/dashboard", { replace: true });
+      navigate("/home/dashboard", { replace: true });
       setError("");
       setLoading(false);
       setSuccess(true);
