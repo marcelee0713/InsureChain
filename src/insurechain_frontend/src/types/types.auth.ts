@@ -1,16 +1,16 @@
 import { UseFormRegister } from "react-hook-form";
 
-export type SignInFormData = {
+export interface SignInFormData {
   username: string;
   password: string;
-};
+}
 
-export type SignUpFormData = {
+export interface SignUpFormData {
   username: string;
   email: string;
   cfrmPassword: string;
   password: string;
-};
+}
 
 export type SignInEnums = "username" | "password";
 

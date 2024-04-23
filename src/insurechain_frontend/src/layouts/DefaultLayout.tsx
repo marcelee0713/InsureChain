@@ -1,7 +1,10 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { AuthLoading } from "../components/auth/loading";
+import { getUser } from "../fetchers/user.fetcher";
 const DefaultLayout = () => {
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const linkPath = isHomePage ? "/auth/sign-in" : "/";
@@ -10,12 +13,38 @@ const DefaultLayout = () => {
 
   useEffect(() => {
     // Check if the user is logged in
-    const isLoggedIn = localStorage.getItem("uid");
-    if (isLoggedIn) {
-      // Redirect to the dashboard if the user is logged in
-      window.location.href = "/dashboard";
-    }
+    const uid = localStorage.getItem("uid");
+
+    const gettingUser = async () => {
+      if (!uid) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        await getUser(uid);
+
+        window.location.href = "/home/dashboard";
+      } catch (err) {
+        localStorage.removeItem("uid");
+        setLoading(false);
+        return;
+      }
+    };
+
+    gettingUser();
   }, []);
+
+  if (loading) {
+    return (
+      <main
+        id="default-layout"
+        className="relative h-screen w-full bg-primary font-openSans container mx-auto flex justify-center items-center"
+      >
+        <AuthLoading />
+      </main>
+    );
+  }
 
   return (
     <main

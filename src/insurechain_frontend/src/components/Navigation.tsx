@@ -28,7 +28,7 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              to="home"
+              to="dashboard"
               className={({ isActive }) =>
                 isActive
                   ? "bg-black text-primary flex items-center p-2 hover:bg-secondary group"
