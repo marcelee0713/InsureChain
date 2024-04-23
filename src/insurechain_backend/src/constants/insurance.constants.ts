@@ -7,7 +7,8 @@ const insuranceData: insuranceType[] = [
     name: "HealthFirst Insurance",
     description:
       "Comprehensive health insurance coverage for individuals and families.",
-    image: "healthfirst.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857946/my-uploads/pexels-totalshape-2383010_tyxang.jpg",
     createdAt: "2024-04-22T00:00:00Z",
     challenges: [
       {
@@ -28,7 +29,8 @@ const insuranceData: insuranceType[] = [
     name: "SafeDrive Insurance",
     description:
       "Auto insurance with a focus on safe driving and accident prevention.",
-    image: "safedrive.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-pixabay-35967_txxpuv.jpg",
     createdAt: "2024-04-23T00:00:00Z",
     challenges: [
       {
@@ -59,7 +61,8 @@ const insuranceData: insuranceType[] = [
     insuranceId: "ins3",
     name: "TravelGuard Insurance",
     description: "Comprehensive travel insurance for individuals and families.",
-    image: "travelguard.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-andreimike-1271619_qws6br.jpg",
     createdAt: "2024-04-24T00:00:00Z",
     challenges: [
       {
@@ -80,7 +83,8 @@ const insuranceData: insuranceType[] = [
     name: "PetCare Insurance",
     description:
       "Insurance coverage for pets, including veterinary care and treatments.",
-    image: "petcare.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857948/my-uploads/pexels-freestockpro-1174081_l6joah.jpg",
     createdAt: "2024-04-25T00:00:00Z",
     challenges: [
       {
@@ -111,7 +115,8 @@ const insuranceData: insuranceType[] = [
     name: "HomeGuard Insurance",
     description:
       "Insurance coverage for homeowners, protecting against property damage and liability.",
-    image: "homeguard.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857947/my-uploads/pexels-binyaminmellish-1396122_tt6slg.jpg",
     createdAt: "2024-04-26T00:00:00Z",
     challenges: [
       {
@@ -131,7 +136,8 @@ const insuranceData: insuranceType[] = [
     name: "FinanceWise Insurance",
     description:
       "Comprehensive financial planning and investment insurance services.",
-    image: "financewise.jpg",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857946/my-uploads/pexels-olia-danilevich-5466785_auixtv.jpg",
     createdAt: "2024-04-27T00:00:00Z",
     challenges: [
       {

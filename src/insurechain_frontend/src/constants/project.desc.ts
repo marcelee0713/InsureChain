@@ -13,3 +13,8 @@ export const PROJECT_DESC = {
    With tokens as your currency, you have the flexibility to choose from a variety 
    of insurance options tailored to your preferences.`,
 };
+
+export const DASHBOARD_DESC = {
+  DESC: `Where you can check out the insurance company's challenges and
+  contracts!`,
+};
