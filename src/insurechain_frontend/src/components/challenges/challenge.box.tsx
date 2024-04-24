@@ -1,39 +1,55 @@
+import useSWR from "swr";
 import {
   ChallengesType,
+  InsuranceType,
   challengeStatus,
 } from "../../interfaces/insurance.interface";
-import { formatDate } from "../../utils/formatDate";
+import { formatDate, formatDateFromTimestamp } from "../../utils/formatDate";
+import { getInsurance } from "../../fetchers/insurance.fetchers";
 
 interface props {
-  data: ChallengesType;
+  challengeData: ChallengesType;
   uid: string;
 }
 
-export const ChallengeBox = ({ data, uid }: props) => {
+export const ChallengeBox = ({ challengeData, uid }: props) => {
   let status = "AVAILABLE";
+  let finishedDate: string | undefined;
 
-  if (data.userStatus.length === 0) {
+  if (challengeData.userStatus.length === 0) {
     status = "AVAILABLE";
   } else {
-    data.userStatus.forEach((val) => {
+    challengeData.userStatus.forEach((val) => {
       if (val.uid !== uid) return;
 
       status = val.status;
+
+      if (val.status === "FINISHED" && val.finishedAt) {
+        finishedDate = formatDateFromTimestamp(val.finishedAt);
+      }
     });
   }
+
+  const { data: insuranceData } = useSWR<InsuranceType>(
+    `${challengeData.insuranceId}:${challengeData.challengesId}`,
+    getInsurance
+  );
 
   return (
     <div className="flex gap-2 justify-between items-center h-[110px] bg-boxColor border border-secondary rounded-md shadow-lg py-5 px-6">
       <div className="flex flex-col text-sm">
         <div className="flex gap-[2px] text-[16px]">
-          <span className="font-semibold">{"Insurance Company"}</span>•
-          <span className="font-bold">{data.name}</span>•
-          <span className="font-bold">{`${data.tokenPrize} tokens`}</span>
+          <span className="font-semibold">{insuranceData?.name}</span>•
+          <span className="font-bold">{challengeData.name}</span>•
+          <span className="font-bold">{`${challengeData.tokenPrize} tokens`}</span>
         </div>
-        <div>{data.description}</div>
+        <div>{challengeData.description}</div>
         <div className="flex gap-[2px] text-[11px]">
-          <span>Posted on: {formatDate(data.createdAt)}</span>•
+          <span>Posted on: {formatDate(challengeData.createdAt)}</span>•
           <span className="font-bold">{status}</span>
+          {finishedDate && (
+            <span className="font-bold"> on {finishedDate}</span>
+          )}
         </div>
       </div>
       <ButtonStates status={status} />
@@ -46,13 +62,30 @@ interface buttonStatesProps {
 }
 
 const ButtonStates = ({ status }: buttonStatesProps) => {
+  const defaultStyle =
+    "border border-secondary text-xs font-bold rounded-xl flex items-center justify-center cursor-pointer hover:bg-black hover:text-primary transition-colors ";
+
   if (status === "AVAILABLE") {
     return (
       <div
         onClick={() => {}}
-        className="w-[200px] h-[45px] border border-secondary text-sm font-bold rounded-xl flex items-center justify-center cursor-pointer"
+        className={`${defaultStyle}` + "w-[150px] h-[40px] duration-300"}
       >
         START
+      </div>
+    );
+  }
+
+  if (status === "ON-GOING") {
+    return (
+      <div className="flex gap-1 w-[150px] h-[40px]">
+        <div onClick={() => {}} className={`${defaultStyle}` + "flex-1"}>
+          CANCEL
+        </div>
+
+        <div onClick={() => {}} className={`${defaultStyle}` + "flex-1"}>
+          FINISH
+        </div>
       </div>
     );
   }

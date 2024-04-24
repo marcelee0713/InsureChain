@@ -10,3 +10,14 @@ export const formatDate = (inputDate: string) => {
   );
   return formattedDate;
 };
+
+export const formatDateFromTimestamp = (timestamp: string | number): string => {
+  const options: Intl.DateTimeFormatOptions = {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+  const date = new Date(Number(timestamp));
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
+};

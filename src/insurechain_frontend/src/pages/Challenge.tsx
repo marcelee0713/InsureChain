@@ -19,7 +19,11 @@ const Challenge = () => {
         <PageDesciption pageName="Challenges" pageDesc={CHALLENGES_DESC.DESC} />
         <div className="flex flex-col gap-5">
           {data.map((val) => (
-            <ChallengeBox data={val} uid={uid} />
+            <ChallengeBox
+              challengeData={val}
+              uid={uid}
+              key={val.challengesId}
+            />
           ))}
         </div>
       </div>
