@@ -14,6 +14,8 @@ const getChallenges = async (key: string): Promise<ChallengesType[]> => {
 
     const jsonData: ChallengesType[] = JSON.parse(challengesStr);
 
+    console.table(jsonData);
+
     return jsonData;
   } catch (err) {
     if (err instanceof Error) {

@@ -53,7 +53,7 @@ export default {
         openSans: ["Open Sans", "sans-serif"],
       },
       colors: {
-        primary: "#F8F9FA ",
+        primary: "#F8F9FA",
         black: "#000000",
         secondary: "#ADB5BD",
         accent: "#6C757D",

@@ -45,7 +45,12 @@ const insuranceData: insuranceType[] = [
         description:
           "Complete an online defensive driving course and pass the final exam.",
         tokenPrize: "15",
-        userStatus: [],
+        userStatus: [
+          {
+            uid: "olT9lP781LjHLLKS",
+            status: "ON-GOING",
+          },
+        ],
         createdAt: "2024-04-23T00:00:00Z",
       },
       {

@@ -235,13 +235,17 @@ const getAvailableChallenges = async (
     insuranceDb.forEach((insurance) => {
       if (insurance.challenges && insurance.challenges.length > 0) {
         insurance.challenges.forEach((challenge) => {
-          challenge.userStatus.forEach((user) => {
-            const isClaimed = user.uid === userId;
+          if (challenge.userStatus.length === 0) {
+            availableChallenges.push(challenge);
+          } else {
+            challenge.userStatus.forEach((user) => {
+              const isClaimed = user.uid === userId;
 
-            if (!isClaimed) {
-              availableChallenges.push(challenge);
-            }
-          });
+              if (isClaimed) {
+                availableChallenges.push(challenge);
+              }
+            });
+          }
         });
       }
     });
