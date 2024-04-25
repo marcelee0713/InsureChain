@@ -1,6 +1,6 @@
-import { insurechain_backend } from "../../../declarations/insurechain_backend";
-import { User } from "../interfaces/user.interface";
-import { catchErrors } from "../utils/error.catcher";
+import { insurechain_backend } from "../../../../declarations/insurechain_backend";
+import { User } from "../../interfaces/user.interface";
+import { catchErrors } from "../../utils/error.catcher";
 
 const getUser = async (key: string): Promise<User> => {
   const uid = localStorage.getItem("uid");

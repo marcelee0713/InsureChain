@@ -10,7 +10,7 @@ import {
   InputTextPassword,
 } from "../../components/inputs/input_texts";
 import { signInSchema } from "../../schemas/auth.schemas";
-import { CallbacksInterface, signInCall } from "../../utils/auth.callbacks";
+import { CallbacksInterface, signInCall } from "../../api/calls/auth.callbacks";
 import { AuthLoading } from "../../components/auth/loading";
 import { AuthStates } from "../../components/auth/states";
 

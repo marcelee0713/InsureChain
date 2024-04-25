@@ -1,7 +1,6 @@
 import { InsuranceType } from "../../interfaces/insurance.interface";
-import { AuthLoading } from "../auth/loading";
+import { Loading, Error, OnEmpty } from "../univeral_states/states";
 import { InsuranceBox } from "./insurance.box";
-import { TbMoodEmptyFilled } from "react-icons/tb";
 
 interface props {
   data: InsuranceType[] | undefined;
@@ -11,45 +10,15 @@ interface props {
 
 export const InsuranceStates = ({ data, loading, error }: props) => {
   if (loading) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center ">
-        <AuthLoading />
-        <div className="text-sm">Fetching data...</div>
-      </div>
-    );
+    return <Loading text="Getting your available challenges." />;
   }
 
-  if (error) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center gap-2">
-        <img src="/images/error.png" className="w-[150px] h-[150px]" />
-        <div className="text-sm">
-          Something went wrong! Please try again later!
-        </div>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center gap-2">
-        <img src="/images/error.png" className="w-[150px] h-[150px]" />
-        <div className="text-sm">
-          Something went wrong! Please try again later!
-        </div>
-      </div>
-    );
+  if (error || !data) {
+    return <Error />;
   }
 
   if (data.length === 0) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center gap-2">
-        <TbMoodEmptyFilled size={150} />
-        <div className="text-sm">
-          There are no insurance companies currently here...
-        </div>
-      </div>
-    );
+    return <OnEmpty />;
   }
 
   return (

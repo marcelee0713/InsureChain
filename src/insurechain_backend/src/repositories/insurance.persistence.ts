@@ -45,13 +45,25 @@ const updateChallengeStatus = async (
       challenge.userStatus.forEach((val) => {
         if (val.uid === userId && val.status === "ON-GOING") {
           const index = challenge.userStatus.indexOf(val);
-          challenge.userStatus[index].status === "FINISHED";
+          challenge.userStatus[index].status = "FINISHED";
           challenge.userStatus[index].finishedAt = Date.now().toString();
           return;
         }
       });
 
       return challenge.tokenPrize;
+    }
+
+    if (challengeStatus === "CANCEL") {
+      challenge.userStatus.forEach((val) => {
+        if (val.uid === userId && val.status === "ON-GOING") {
+          const index = challenge.userStatus.indexOf(val);
+          challenge.userStatus.splice(index, 1);
+          return;
+        }
+      });
+
+      return "0";
     }
 
     const createStatus: userStatus = {
@@ -235,13 +247,7 @@ const getAvailableChallenges = async (
     insuranceDb.forEach((insurance) => {
       if (insurance.challenges && insurance.challenges.length > 0) {
         insurance.challenges.forEach((challenge) => {
-          challenge.userStatus.forEach((user) => {
-            const isClaimed = user.uid === userId;
-
-            if (!isClaimed) {
-              availableChallenges.push(challenge);
-            }
-          });
+          availableChallenges.push(challenge);
         });
       }
     });
