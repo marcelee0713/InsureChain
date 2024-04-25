@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CallbacksInterface, signUpCall } from "../../utils/auth.callbacks";
+import { CallbacksInterface, signUpCall } from "../../api/calls/auth.callbacks";
 import { SignUpFormData } from "../../types/types.auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

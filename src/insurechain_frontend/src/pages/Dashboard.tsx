@@ -1,5 +1,5 @@
 import { DASHBOARD_DESC } from "../constants/project.desc";
-import { getInsurances } from "../fetchers/insurance.fetchers";
+import { getInsurances } from "../api/fetchers/insurance.fetchers";
 import { PageDesciption } from "../components/page.desc";
 import { InsuranceStates } from "../components/dashboard/insurance.states";
 import { InsuranceType } from "../interfaces/insurance.interface";

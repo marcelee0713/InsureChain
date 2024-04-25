@@ -1,6 +1,6 @@
-import { insurechain_backend } from "../../../declarations/insurechain_backend";
-import { SignInFormData, SignUpFormData } from "../types/types.auth";
-import { catchErrors } from "./error.catcher";
+import { insurechain_backend } from "../../../../declarations/insurechain_backend";
+import { SignInFormData, SignUpFormData } from "../../types/types.auth";
+import { catchErrors } from "../../utils/error.catcher";
 
 export interface CallbacksInterface {
   onLoading: () => void;

@@ -23,4 +23,4 @@ export type userStatus = {
   finishedAt?: string;
 };
 
-export type challengeStatus = "ON-GOING" | "FINISHED";
+export type challengeStatus = "ON-GOING" | "FINISHED" | "CANCEL";

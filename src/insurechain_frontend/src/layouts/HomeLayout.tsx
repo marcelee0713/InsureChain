@@ -2,7 +2,7 @@ import Navigation from "../components/Navigation";
 import { Outlet } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 import { User } from "../interfaces/user.interface";
-import { getUser } from "../fetchers/user.fetcher";
+import { getUser } from "../api/fetchers/user.fetcher";
 import { AuthLoading } from "../components/auth/loading";
 
 const HomeLayout = () => {

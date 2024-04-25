@@ -1,6 +1,6 @@
-import { insurechain_backend } from "../../../declarations/insurechain_backend";
-import { ChallengesType } from "../interfaces/insurance.interface";
-import { catchErrors } from "../utils/error.catcher";
+import { insurechain_backend } from "../../../../declarations/insurechain_backend";
+import { ChallengesType } from "../../interfaces/insurance.interface";
+import { catchErrors } from "../../utils/error.catcher";
 
 const getChallenges = async (key: string): Promise<ChallengesType[]> => {
   try {
@@ -13,8 +13,6 @@ const getChallenges = async (key: string): Promise<ChallengesType[]> => {
     });
 
     const jsonData: ChallengesType[] = JSON.parse(challengesStr);
-
-    console.table(jsonData);
 
     return jsonData;
   } catch (err) {

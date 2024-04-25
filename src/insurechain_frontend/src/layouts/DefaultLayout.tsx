@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { AuthLoading } from "../components/auth/loading";
-import { getUser } from "../fetchers/user.fetcher";
+import { getUser } from "../api/fetchers/user.fetcher";
 const DefaultLayout = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();

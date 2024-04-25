@@ -1,6 +1,6 @@
-import { insurechain_backend } from "../../../declarations/insurechain_backend";
-import { InsuranceType } from "../interfaces/insurance.interface";
-import { catchErrors } from "../utils/error.catcher";
+import { insurechain_backend } from "../../../../declarations/insurechain_backend";
+import { InsuranceType } from "../../interfaces/insurance.interface";
+import { catchErrors } from "../../utils/error.catcher";
 
 const getInsurances = async (key: string): Promise<InsuranceType[]> => {
   try {
