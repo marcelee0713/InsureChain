@@ -1,4 +1,7 @@
-import { challengesType, insuranceType } from "../types/insurance.types";
+import {
+  challengesType,
+  insuranceType,
+} from "../interfaces/insurance.interface";
 import { generateUID } from "../utils/uid.generator";
 
 const insuranceData: insuranceType[] = [
@@ -15,6 +18,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857946/my-uploads/pexels-totalshape-2383010_tyxang.jpg",
     createdAt: "2024-04-22T00:00:00Z",
+    benefits: [
+      {
+        name: "Wellness Programs",
+        description:
+          "Access to wellness programs and resources aimed at promoting healthy lifestyle choices and preventing illness.",
+      },
+      {
+        name: "Telemedicine Services",
+        description:
+          "Convenient access to virtual healthcare consultations, allowing for timely medical advice and assistance from qualified professionals.",
+      },
+      {
+        name: "Prescription Drug Coverage",
+        description:
+          "Coverage for prescription medications, ensuring affordability and accessibility for necessary treatments.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),
@@ -46,6 +66,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-pixabay-35967_txxpuv.jpg",
     createdAt: "2024-04-23T00:00:00Z",
+    benefits: [
+      {
+        name: "Safe Driving Discounts",
+        description:
+          "Opportunities for discounts and rewards for maintaining a safe driving record, encouraging and incentivizing responsible driving behavior.",
+      },
+      {
+        name: "Accident Forgiveness",
+        description:
+          "Option for accident forgiveness, protecting your premium rates from increasing after your first at-fault accident.",
+      },
+      {
+        name: "24/7 Roadside Assistance",
+        description:
+          "Access to 24/7 roadside assistance services, providing support in case of vehicle breakdowns, flat tires, or other emergencies while on the road.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),
@@ -85,6 +122,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-andreimike-1271619_qws6br.jpg",
     createdAt: "2024-04-24T00:00:00Z",
+    benefits: [
+      {
+        name: "Trip Interruption Coverage",
+        description:
+          "Coverage for trip interruptions due to unforeseen events such as natural disasters, illness, or travel advisories, reimbursing non-refundable trip expenses.",
+      },
+      {
+        name: "Emergency Medical Evacuation",
+        description:
+          "Coverage for emergency medical evacuation to the nearest adequate medical facility in case of serious illness or injury while traveling.",
+      },
+      {
+        name: "Travel Assistance Services",
+        description:
+          "Access to travel assistance services, including emergency travel arrangements, medical referrals, and assistance with lost documents or passports.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),
@@ -109,6 +163,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857948/my-uploads/pexels-freestockpro-1174081_l6joah.jpg",
     createdAt: "2024-04-25T00:00:00Z",
+    benefits: [
+      {
+        name: "Routine Care Coverage",
+        description:
+          "Option for coverage of routine veterinary care, including vaccinations, wellness exams, and preventive treatments.",
+      },
+      {
+        name: "Multi-Pet Discounts",
+        description:
+          "Discounts for insuring multiple pets under the same policy, making pet insurance more affordable for households with multiple furry companions.",
+      },
+      {
+        name: "Hereditary Conditions Coverage",
+        description:
+          "Coverage for hereditary and congenital conditions, ensuring that even genetic health issues are included in the insurance coverage for your pets.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),
@@ -142,6 +213,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857947/my-uploads/pexels-binyaminmellish-1396122_tt6slg.jpg",
     createdAt: "2024-04-26T00:00:00Z",
+    benefits: [
+      {
+        name: "Replacement Cost Coverage",
+        description:
+          "Option for replacement cost coverage for personal belongings, ensuring that you receive the full cost of replacing items in case of loss or damage.",
+      },
+      {
+        name: "Identity Theft Protection",
+        description:
+          "Additional coverage for identity theft protection, offering assistance and reimbursement for expenses related to identity theft incidents.",
+      },
+      {
+        name: "Loss of Use Coverage",
+        description:
+          "Coverage for additional living expenses if your home becomes uninhabitable due to a covered peril, such as fire or natural disaster, helping you maintain your standard of living during repairs or relocation.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),
@@ -165,6 +253,23 @@ const insuranceData: insuranceType[] = [
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857946/my-uploads/pexels-olia-danilevich-5466785_auixtv.jpg",
     createdAt: "2024-04-27T00:00:00Z",
+    benefits: [
+      {
+        name: "Investment Advisory Services",
+        description:
+          "Access to investment advisory services, providing personalized investment strategies and recommendations tailored to your financial goals and risk tolerance.",
+      },
+      {
+        name: "Retirement Planning",
+        description:
+          "Expert guidance and assistance with retirement planning, helping you create a comprehensive retirement savings strategy and maximize your retirement income.",
+      },
+      {
+        name: "Estate Planning Assistance",
+        description:
+          "Assistance with estate planning, including wills, trusts, and estate tax considerations, helping you protect and distribute your assets according to your wishes.",
+      },
+    ],
     challenges: [
       {
         challengesId: generateUID(),

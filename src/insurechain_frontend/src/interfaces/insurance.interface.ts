@@ -4,6 +4,7 @@ export interface InsuranceType {
   longDescription: string;
   description: string;
   image: string;
+  benefits: benefitsType[];
   challenges: ChallengesType[];
   createdAt: string;
 }
@@ -23,5 +24,10 @@ export type userStatus = {
   status: challengeStatus; // AVAILABLE ON DEFAULT WHEN USER IS NOT PRESENT
   finishedAt?: string;
 };
+
+export interface benefitsType {
+  name: string;
+  description: string;
+}
 
 export type challengeStatus = "ON-GOING" | "FINISHED" | "CANCEL";

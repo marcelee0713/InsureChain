@@ -1,4 +1,7 @@
-import { challengesType, insuranceType } from "../types/insurance.types";
+import {
+  challengesType,
+  insuranceType,
+} from "../interfaces/insurance.interface";
 import { generateUID } from "../utils/uid.generator";
 
 const createInsurance = async (
@@ -21,6 +24,7 @@ const createInsurance = async (
       longDescription: longDesc,
       description,
       image,
+      benefits: [],
       createdAt: Date.now().toString(),
       challenges: challenges.map((challenge) => ({
         ...challenge,

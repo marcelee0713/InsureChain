@@ -2,7 +2,7 @@ import {
   challengesType,
   insuranceType,
   userStatus,
-} from "../types/insurance.types";
+} from "../interfaces/insurance.interface";
 import { generateUID } from "../utils/uid.generator";
 
 const createChallenge = async (

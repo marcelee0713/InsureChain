@@ -1,4 +1,4 @@
-import { userOnDbType, userType } from "../types/user.types";
+import { userOnDbType, userType } from "../interfaces/user.interface";
 import { comparePasswords } from "./bycrypt";
 
 const validateUsername = (username: string): boolean => {

@@ -2,9 +2,9 @@ import { Canister, update, text, Void, query } from "azle";
 import { hashPassword } from "./utils/bycrypt";
 import { validate, validateLogin } from "./utils/user.validation";
 import { generateUID } from "./utils/uid.generator";
-import { userType } from "./types/user.types";
+import { userType } from "./interfaces/user.interface";
 import { addTokenToUser } from "./repositories/token.persistence";
-import { insuranceType } from "./types/insurance.types";
+import { insuranceType } from "./interfaces/insurance.interface";
 import {
   createInsurance,
   getInsurance,
