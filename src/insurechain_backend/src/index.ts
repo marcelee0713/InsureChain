@@ -52,6 +52,7 @@ export default Canister({
         email: req.email,
         token: "0",
         createdAt: Date.now().toString(),
+        activities: [],
       };
 
       usersDb.push(res);
@@ -85,7 +86,8 @@ export default Canister({
         req.insuranceId,
         req.challengeId,
         req.challengeStatus,
-        insuranceDb
+        insuranceDb,
+        usersDb
       );
 
       return tokenPrize;

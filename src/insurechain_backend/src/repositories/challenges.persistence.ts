@@ -3,7 +3,9 @@ import {
   insuranceType,
   userStatus,
 } from "../interfaces/insurance.interface";
+import { userType } from "../interfaces/user.interface";
 import { generateUID } from "../utils/uid.generator";
+import { updateActivity } from "./user.persistance";
 
 const createChallenge = async (
   insuranceId: string,
@@ -53,7 +55,8 @@ const updateChallengeStatus = async (
   insuranceId: string,
   challengesId: string,
   challengeStatus: string,
-  insuranceDb: insuranceType[]
+  insuranceDb: insuranceType[],
+  usersDb: userType[]
 ): Promise<string> => {
   try {
     if (!userId || !insuranceId || !challengesId) {
@@ -90,6 +93,13 @@ const updateChallengeStatus = async (
           const index = challenge.userStatus.indexOf(val);
           challenge.userStatus[index].status = "FINISHED";
           challenge.userStatus[index].finishedAt = Date.now().toString();
+
+          updateActivity(userId, "CHALLENGES", "DONE", usersDb, {
+            challengeId: challenge.challengesId,
+            insuranceId: insurance.insuranceId,
+            statusId: val.uid,
+          });
+
           return;
         }
       });
@@ -102,6 +112,13 @@ const updateChallengeStatus = async (
         if (val.uid === userId && val.status === "ON-GOING") {
           const index = challenge.userStatus.indexOf(val);
           challenge.userStatus.splice(index, 1);
+
+          updateActivity(userId, "CHALLENGES", "REMOVE", usersDb, {
+            challengeId: challenge.challengesId,
+            insuranceId: insurance.insuranceId,
+            statusId: val.uid,
+          });
+
           return;
         }
       });
@@ -115,6 +132,12 @@ const updateChallengeStatus = async (
     };
 
     challenge.userStatus.push(createStatus);
+
+    updateActivity(userId, "CHALLENGES", "START", usersDb, {
+      challengeId: challenge.challengesId,
+      insuranceId: insurance.insuranceId,
+      statusId: userId,
+    });
 
     return "0";
   } catch (err) {

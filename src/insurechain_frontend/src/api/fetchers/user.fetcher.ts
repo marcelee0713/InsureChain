@@ -16,6 +16,7 @@ const getUser = async (key: string): Promise<User> => {
     if (err instanceof Error) {
       throw new Error(catchErrors(err));
     }
+
     throw new Error("Internal server error");
   }
 };
