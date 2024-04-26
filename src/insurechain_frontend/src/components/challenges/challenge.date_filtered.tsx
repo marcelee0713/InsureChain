@@ -8,6 +8,7 @@ interface props extends ChallengesStatesProps {
   currentStatus: string;
   currentDate: string;
   data: ChallengesType[];
+  challengeKey: string;
 }
 
 export const ChallengeFiltered = ({
@@ -16,6 +17,7 @@ export const ChallengeFiltered = ({
   currentStatus,
   data,
   uid,
+  challengeKey,
 }: props) => {
   if (currentDate === "LATEST") {
     return (
@@ -28,6 +30,7 @@ export const ChallengeFiltered = ({
               key={val.challengesId}
               input={input}
               onStatus={currentStatus}
+              challengeKey={challengeKey}
             />
           )
         )}
@@ -44,6 +47,7 @@ export const ChallengeFiltered = ({
               key={val.challengesId}
               input={input}
               onStatus={currentStatus}
+              challengeKey={challengeKey}
             />
           )
         )}

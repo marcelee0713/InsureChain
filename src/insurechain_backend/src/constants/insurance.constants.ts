@@ -5,6 +5,11 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins1",
     name: "HealthFirst Insurance",
+    longDescription: `HealthFirst Insurance provides comprehensive health insurance coverage for individuals and 
+    families. Our plans are designed to meet diverse healthcare needs, offering access to quality medical services 
+    including hospitalization, doctor visits, prescriptions, and preventive care. With flexible options and a wide 
+    network of healthcare providers, we prioritize your health and well-being, ensuring peace of mind and financial 
+    security for you and your loved ones.`,
     description:
       "Comprehensive health insurance coverage for individuals and families.",
     image:
@@ -32,6 +37,10 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins2",
     name: "SafeDrive Insurance",
+    longDescription: `SafeDrive Insurance offers auto insurance solutions with a primary focus on safe driving and 
+    accident prevention. Our insurance plans are designed to reward responsible drivers while promoting safe driving habits. 
+    With a commitment to protecting you and your vehicle, SafeDrive Insurance provides coverage options tailored to your needs, 
+    ensuring peace of mind on the road.`,
     description:
       "Auto insurance with a focus on safe driving and accident prevention.",
     image:
@@ -68,6 +77,10 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins3",
     name: "TravelGuard Insurance",
+    longDescription: `TravelGuard Insurance offers comprehensive travel insurance tailored for individuals and families.
+     With a focus on providing peace of mind during your travels, our insurance plans cover a wide range of unexpected 
+     events, including trip cancellations, medical emergencies, lost baggage, and more, ensuring you can explore the world 
+     with confidence.`,
     description: "Comprehensive travel insurance for individuals and families.",
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-andreimike-1271619_qws6br.jpg",
@@ -88,6 +101,9 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins4",
     name: "PetCare Insurance",
+    longDescription: `PetCare Insurance provides comprehensive coverage for pets, including veterinary care and treatments.
+     Our insurance plans are designed to protect your furry companions and provide financial assistance for medical expenses, 
+     ensuring their health and well-being is always a top priority.`,
     description:
       "Insurance coverage for pets, including veterinary care and treatments.",
     image:
@@ -118,6 +134,9 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins5",
     name: "HomeGuard Insurance",
+    longDescription: `HomeGuard Insurance provides comprehensive coverage for homeowners, offering protection 
+    against property damage and liability. Our insurance plans are tailored to safeguard your home and belongings, 
+    providing peace of mind and financial security for you and your family.`,
     description:
       "Insurance coverage for homeowners, protecting against property damage and liability.",
     image:
@@ -138,6 +157,9 @@ const insuranceData: insuranceType[] = [
   {
     insuranceId: "ins6",
     name: "FinanceWise Insurance",
+    longDescription: `FinanceWise Insurance offers comprehensive financial planning and investment insurance services. 
+    Our services are designed to help individuals and families navigate their financial futures with confidence, providing 
+    expert guidance and tailored insurance solutions to meet their needs.`,
     description:
       "Comprehensive financial planning and investment insurance services.",
     image:

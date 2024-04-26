@@ -10,6 +10,7 @@ export interface ChallengesStatesProps {
   error?: any;
   data: ChallengesType[] | undefined;
   uid: string;
+  challengeKey: string;
 }
 
 export const ChallengesStates = ({
@@ -17,6 +18,7 @@ export const ChallengesStates = ({
   error,
   loading,
   uid,
+  challengeKey,
 }: ChallengesStatesProps) => {
   const [input, setInput] = useState("");
   const [status, setStatus] = useState(statusArr[0]);
@@ -58,6 +60,7 @@ export const ChallengesStates = ({
         data={data}
         currentDate={date}
         uid={uid}
+        challengeKey={challengeKey}
       />
     </div>
   );

@@ -30,7 +30,6 @@ export const InsuranceStates = ({ data, loading, error }: props) => {
           desc={val.description}
           image={val.image}
           challenges={val.challenges}
-          onClick={() => {}}
           key={val.insuranceId}
         />
       ))}

@@ -23,4 +23,24 @@ const getChallenges = async (key: string): Promise<ChallengesType[]> => {
   }
 };
 
-export { getChallenges };
+const getChallengesFromInsurance = async (
+  key: string
+): Promise<ChallengesType[]> => {
+  try {
+    const choppedkey = key.split(":");
+
+    const insuranceId = choppedkey[0];
+
+    const challengesStr = await insurechain_backend.getInsuranceChallenges({
+      insuranceId: insuranceId,
+    });
+
+    const jsonData: ChallengesType[] = JSON.parse(challengesStr);
+
+    return jsonData;
+  } catch (err) {
+    throw new Error("Internal server error");
+  }
+};
+
+export { getChallenges, getChallengesFromInsurance };

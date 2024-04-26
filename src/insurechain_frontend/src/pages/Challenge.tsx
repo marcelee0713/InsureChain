@@ -24,6 +24,7 @@ const Challenge = () => {
         error={error}
         loading={isLoading}
         uid={uid}
+        challengeKey="/getAvailableChallenges"
       />
     </div>
   );

@@ -1,6 +1,7 @@
 export interface InsuranceType {
   insuranceId: string;
   name: string;
+  longDescription: string;
   description: string;
   image: string;
   challenges: ChallengesType[];

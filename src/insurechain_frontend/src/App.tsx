@@ -8,6 +8,7 @@ import HomeLayout from "./layouts/HomeLayout";
 import Profile from "./pages/Profile";
 import Challenge from "./pages/Challenge";
 import Dashboard from "./pages/Dashboard";
+import InsurancePage from "./pages/InsurancePage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route index path="dashboard" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
             <Route path="challenges" element={<Challenge />} />
+            <Route path="insurance/:id" element={<InsurancePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

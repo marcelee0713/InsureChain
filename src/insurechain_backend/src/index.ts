@@ -6,12 +6,8 @@ import { userType } from "./types/user.types";
 import { addTokenToUser } from "./repositories/token.persistence";
 import { insuranceType } from "./types/insurance.types";
 import {
-  createChallenge,
   createInsurance,
-  getChallenge,
   getInsurance,
-  updateChallengeStatus,
-  getAvailableChallenges,
 } from "./repositories/insurance.persistence";
 import {
   gainTokenBody,
@@ -24,6 +20,7 @@ import {
   createChallengeBody,
   updateChallengeBody,
   getAvailableChallengesBody,
+  getInsuranceChallengesBody,
 } from "./records/challenge.records";
 import {
   createInsuranceBody,
@@ -32,6 +29,13 @@ import {
 import { usersData } from "./constants/user.constants";
 import insuranceData from "./constants/insurance.constants";
 import { getUser } from "./repositories/user.persistance";
+import {
+  createChallenge,
+  getAvailableChallenges,
+  getChallenge,
+  getChallengesFromInsurance,
+  updateChallengeStatus,
+} from "./repositories/challenges.persistence";
 
 let usersDb: userType[] = usersData;
 let insuranceDb: insuranceType[] = insuranceData;
@@ -99,6 +103,7 @@ export default Canister({
       await createInsurance(
         req.insuranceName,
         req.description,
+        req.longDescription,
         req.imageUrl,
         [],
         insuranceDb
@@ -192,6 +197,12 @@ export default Canister({
       }
       throw new Error("Internal server error!");
     }
+  }),
+
+  getInsuranceChallenges: query([getInsuranceChallengesBody], text, (req) => {
+    const challenges = getChallengesFromInsurance(req.insuranceId, insuranceDb);
+
+    return JSON.stringify(challenges);
   }),
 
   getAvailableChallenges: query(

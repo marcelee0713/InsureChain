@@ -1,5 +1,9 @@
 import { Record, text } from "azle";
 
+const getInsuranceChallengesBody = Record({
+  insuranceId: text,
+});
+
 const challengeBody = Record({
   insuranceId: text,
   challengeId: text,
@@ -29,4 +33,5 @@ export {
   createChallengeBody,
   challengeBody,
   getAvailableChallengesBody,
+  getInsuranceChallengesBody,
 };
