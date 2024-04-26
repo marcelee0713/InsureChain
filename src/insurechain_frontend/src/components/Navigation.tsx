@@ -5,11 +5,10 @@ import { NavigationItems } from "./navigation/nav.items";
 import { MdSpaceDashboard } from "react-icons/md";
 
 interface props {
-  name: string;
   onLogOut: () => void;
 }
 
-const Navigation = ({ name, onLogOut }: props) => {
+const Navigation = ({ onLogOut }: props) => {
   return (
     <aside
       className="min-w-64 h-full bg-primary overflow-y-auto border-r-2 border-black border-opacity-70"
@@ -22,7 +21,7 @@ const Navigation = ({ name, onLogOut }: props) => {
           <div className="font-bold text-xl font-openSans ">InsureChain</div>
         </li>
 
-        <NavigationItems icon={FaUser} redirectTo="profile" text={name} />
+        <NavigationItems icon={FaUser} redirectTo="profile" text={"Profile"} />
 
         <NavigationItems
           icon={MdSpaceDashboard}

@@ -1,5 +1,11 @@
 import { Record, text } from "azle";
 
+import {
+  eventType,
+  activityType,
+  activityIds,
+} from "../interfaces/user.interface";
+
 const userBody = Record({
   userId: text,
 });

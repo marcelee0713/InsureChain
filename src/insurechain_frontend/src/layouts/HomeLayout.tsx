@@ -35,7 +35,6 @@ const HomeLayout = () => {
             localStorage.removeItem("uid");
             mutate("/getUserSession");
           }}
-          name={data.username}
         />
         <Outlet />
       </main>

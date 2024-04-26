@@ -53,8 +53,8 @@ export const InsuranceBox = ({
         </div>
         {availableChallenges === 0 ? (
           <div className="text-sm font-light">
-            There is currenly no challenges available for you in this insurance
-            company.
+            There are currently no challenges available for you in this
+            insurance company.
           </div>
         ) : (
           <div className="text-sm font-light flex flex-col gap-2">

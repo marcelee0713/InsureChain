@@ -37,7 +37,7 @@ const insuranceData: insuranceType[] = [
     ],
     challenges: [
       {
-        challengesId: generateUID(),
+        challengesId: "randomChallengeId12346",
         insuranceId: "ins1",
         name: "Healthy Habits Challenge",
         description:
