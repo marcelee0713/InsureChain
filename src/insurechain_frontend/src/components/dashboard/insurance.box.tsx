@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ChallengesType } from "../../interfaces/insurance.interface";
 
 interface props {
@@ -5,7 +6,6 @@ interface props {
   image: string;
   name: string;
   desc: string;
-  onClick: () => void;
   challenges: ChallengesType[];
 }
 
@@ -15,7 +15,6 @@ export const InsuranceBox = ({
   name,
   desc,
   challenges,
-  onClick,
 }: props) => {
   const uid = localStorage.getItem("uid");
   let availableChallenges = 0;
@@ -34,10 +33,10 @@ export const InsuranceBox = ({
   });
 
   return (
-    <div
-      onClick={onClick}
+    <Link
+      to={`/home/insurance/${insuranceId}`}
       style={{ backgroundImage: `url(${image})` }}
-      className={`flex flex-col cursor-pointer bg-cover rounded-lg h-[400px] group shadow-lg animate-animfadeLeftSide`}
+      className={`flex flex-col cursor-pointer bg-cover rounded-lg h-[400px] group shadow-lg`}
     >
       <div className="flex-1 flex flex-col bg-black opacity-50 rounded-t-lg items-center justify-center">
         <h1 className="font-bold text-xl opacity-0 duration-300 transition-opacity text-white group-hover:opacity-100">
@@ -66,6 +65,6 @@ export const InsuranceBox = ({
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 };

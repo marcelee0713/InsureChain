@@ -12,6 +12,7 @@ interface props {
   uid: string;
   input: string;
   onStatus: string;
+  challengeKey: string;
 }
 
 export const ChallengeFilteredBox = ({
@@ -19,6 +20,7 @@ export const ChallengeFilteredBox = ({
   uid,
   input,
   onStatus,
+  challengeKey,
 }: props) => {
   let status = "AVAILABLE";
   let finishedDate: string | undefined;
@@ -73,6 +75,7 @@ export const ChallengeFilteredBox = ({
           status={status}
           createdAt={formatDate(challengeData.createdAt)}
           finishedAt={finishedDate}
+          challengeKey={challengeKey}
         />
       );
     } else if (notFiltered) {
@@ -86,6 +89,7 @@ export const ChallengeFilteredBox = ({
           status={status}
           createdAt={formatDate(challengeData.createdAt)}
           finishedAt={finishedDate}
+          challengeKey={challengeKey}
         />
       );
     }
@@ -101,6 +105,7 @@ export const ChallengeFilteredBox = ({
           status={status}
           createdAt={formatDate(challengeData.createdAt)}
           finishedAt={finishedDate}
+          challengeKey={challengeKey}
         />
       );
     } else if (notFiltered) {
@@ -114,6 +119,7 @@ export const ChallengeFilteredBox = ({
           status={status}
           createdAt={formatDate(challengeData.createdAt)}
           finishedAt={finishedDate}
+          challengeKey={challengeKey}
         />
       );
     }

@@ -1,13 +1,15 @@
-export type insuranceType = {
+export interface insuranceType {
   insuranceId: string;
   name: string;
   description: string;
+  longDescription: string;
   image: string;
+  benefits: benefitsType[];
   challenges: challengesType[];
   createdAt: string;
-};
+}
 
-export type challengesType = {
+export interface challengesType {
   challengesId: string;
   insuranceId: string;
   name: string;
@@ -15,12 +17,17 @@ export type challengesType = {
   tokenPrize: string;
   userStatus: userStatus[];
   createdAt: string;
-};
+}
 
-export type userStatus = {
+export interface userStatus {
   uid: string;
   status: challengeStatus; // AVAILABLE ON DEFAULT WHEN USER IS NOT PRESENT
   finishedAt?: string;
-};
+}
+
+export interface benefitsType {
+  name: string;
+  description: string;
+}
 
 export type challengeStatus = "ON-GOING" | "FINISHED";

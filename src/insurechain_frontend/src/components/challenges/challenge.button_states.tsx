@@ -9,6 +9,7 @@ interface buttonStatesProps {
   uid: string;
   insuranceId: string;
   challengeId: string;
+  challengeKey: string;
 }
 
 export const ChallengeButtonStates = ({
@@ -16,6 +17,7 @@ export const ChallengeButtonStates = ({
   challengeId,
   insuranceId,
   uid,
+  challengeKey,
 }: buttonStatesProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -40,7 +42,7 @@ export const ChallengeButtonStates = ({
     },
 
     onSuccess(result) {
-      mutate("/getAvailableChallenges");
+      mutate(challengeKey);
       setOnDisable(false);
       setLoading(false);
       setError("");

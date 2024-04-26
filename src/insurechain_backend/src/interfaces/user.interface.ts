@@ -1,13 +1,13 @@
-export type userType = {
+export interface userType {
   uid: string;
   username: string;
   email: string;
   password: string;
   token: string;
   createdAt: string;
-};
+}
 
-export type userOnDbType = {
+export interface userOnDbType {
   uid: string;
   password: string;
-};
+}

@@ -1,4 +1,4 @@
-import { userType } from "../types/user.types";
+import { userType } from "../interfaces/user.interface";
 
 const addTokenToUser = (
   userId: string,
