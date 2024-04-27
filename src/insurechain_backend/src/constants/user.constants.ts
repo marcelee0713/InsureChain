@@ -16,6 +16,7 @@ export const usersData: userType[] = [
         activityIds: {
           challengeId: "randomChallengeId12346",
           insuranceId: "ins1",
+          statusId: "olT9lP781LjHLLKS",
         },
       },
     ],

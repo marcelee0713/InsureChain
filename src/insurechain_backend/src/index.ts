@@ -28,7 +28,7 @@ import {
 } from "./records/insurance.records";
 import { usersData } from "./constants/user.constants";
 import insuranceData from "./constants/insurance.constants";
-import { getUser } from "./repositories/user.persistance";
+import { getUser, profileData } from "./repositories/user.persistance";
 import {
   createChallenge,
   getAvailableChallenges,
@@ -164,6 +164,19 @@ export default Canister({
       const user = await getUser(req.userId, usersDb);
 
       return JSON.stringify(user);
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
+      throw new Error("Internal server error!");
+    }
+  }),
+
+  getUserProfileData: query([userBody], text, async (req) => {
+    try {
+      const data = await profileData(req.userId, usersDb, insuranceDb);
+
+      return JSON.stringify(data);
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
