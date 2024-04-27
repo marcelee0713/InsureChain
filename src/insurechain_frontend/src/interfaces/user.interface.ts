@@ -23,3 +23,25 @@ export interface ActivityIds {
   challengeId: string;
   statusId: string;
 }
+
+export interface ProfileData {
+  uid: string;
+  username: string;
+  tokens: string;
+  joinedAt: string;
+  completedChallengesCount: string;
+  onGoingChallengesCount: string;
+  gainedTokensToday: string;
+  latestChallenge?: ProfileChallengeData;
+  latestCompletedChallenge?: ProfileChallengeData;
+  highestTokenGained?: ProfileChallengeData;
+}
+
+export interface ProfileChallengeData {
+  insuranceId: string;
+  challengeId: string;
+  challengeName: string;
+  insuranceName: string;
+  issuedAt?: string;
+  token: string;
+}
