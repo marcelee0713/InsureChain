@@ -1,11 +1,19 @@
+import { insuranceType } from "../interfaces/insurance.interface";
 import {
   activities,
   activityIds,
   activityType,
   eventType,
+  profileData,
   userType,
 } from "../interfaces/user.interface";
 import { removeOldChallengesActivity } from "../utils/activity";
+import {
+  UserActivitiesDataHandler,
+  UserChallengesDataHandler,
+  UserTokenDataHandler,
+  tokenData,
+} from "../utils/user.data.handler";
 
 const getUser = async (uid: string, useDb: userType[]): Promise<userType> => {
   try {
@@ -95,4 +103,73 @@ const updateActivity = async (
   }
 };
 
-export { getUser, updateActivity };
+const profileData = async (
+  uid: string,
+  userDb: userType[],
+  insuranceDb: insuranceType[]
+): Promise<profileData> => {
+  try {
+    let user: userType | undefined = undefined;
+
+    for (let i = 0; i < userDb.length; i++) {
+      if (uid === userDb[i].uid) {
+        user = userDb[i];
+        break;
+      }
+    }
+
+    if (!user) throw new Error("The following user can not be found!");
+
+    const data: profileData = {
+      uid: uid,
+      username: user.username,
+      tokens: user.token,
+      joinedAt: user.createdAt,
+      completedChallengesCount: "0",
+      onGoingChallengesCount: "0",
+      gainedTokensToday: "0",
+    };
+
+    const tokenData: tokenData = UserTokenDataHandler({
+      insuranceDb: insuranceDb,
+      user: user,
+    });
+
+    data.completedChallengesCount = UserActivitiesDataHandler({
+      user: user,
+      mode: "COMPLETED_CHALLENGES",
+    });
+
+    data.onGoingChallengesCount = UserActivitiesDataHandler({
+      user: user,
+      mode: "ON-GOING_CHALLENGES",
+    });
+
+    data.latestChallenge = UserChallengesDataHandler({
+      user: user,
+      insuranceDb: insuranceDb,
+      activity: "CHALLENGES",
+      event: "START",
+    });
+
+    data.latestCompletedChallenge = UserChallengesDataHandler({
+      user: user,
+      insuranceDb: insuranceDb,
+      activity: "CHALLENGES",
+      event: "DONE",
+    });
+
+    data.gainedTokensToday = tokenData.gainedTokensToday;
+    data.highestTokenGained = tokenData.highestTokenGainedObj;
+
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+
+    throw new Error("Internal server error!");
+  }
+};
+
+export { getUser, updateActivity, profileData };
