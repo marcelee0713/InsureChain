@@ -2,7 +2,9 @@ import {
   challengesType,
   insuranceType,
 } from "../interfaces/insurance.interface";
+import { userType } from "../interfaces/user.interface";
 import { generateUID } from "../utils/uid.generator";
+import { getUser } from "./user.persistance";
 
 const createInsurance = async (
   insuranceName: string,
@@ -24,6 +26,7 @@ const createInsurance = async (
       longDescription: longDesc,
       description,
       image,
+      requiredTokens: "50",
       benefits: [],
       createdAt: Date.now().toString(),
       challenges: challenges.map((challenge) => ({
@@ -70,4 +73,43 @@ const getInsurance = async (
   }
 };
 
-export { createInsurance, getInsurance };
+const applyInsurance = async (
+  userId: string,
+  insuranceId: string,
+  insuranceDb: insuranceType[],
+  userDb: userType[]
+): Promise<void> => {
+  try {
+    const user = await getUser(userId, userDb);
+
+    const insurance = await getInsurance(insuranceId, insuranceDb);
+
+    const currentToken = parseInt(user.token);
+    const costToApply = parseInt(insurance.requiredTokens);
+
+    if (currentToken >= costToApply) {
+      let tokenResult = currentToken - costToApply;
+
+      if (tokenResult < 0) {
+        tokenResult = 0;
+      }
+
+      for (let i = 0; i < userDb.length; i++) {
+        if (userDb[i].uid === userId) {
+          userDb[i].token = tokenResult.toString();
+          break;
+        }
+      }
+    } else {
+      throw new Error("Not enought tokens!");
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+
+    throw new Error("Internal server error!");
+  }
+};
+
+export { createInsurance, getInsurance, applyInsurance };

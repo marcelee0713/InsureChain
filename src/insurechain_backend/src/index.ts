@@ -6,6 +6,7 @@ import { userType } from "./interfaces/user.interface";
 import { addTokenToUser } from "./repositories/token.persistence";
 import { insuranceType } from "./interfaces/insurance.interface";
 import {
+  applyInsurance,
   createInsurance,
   getInsurance,
 } from "./repositories/insurance.persistence";
@@ -23,6 +24,7 @@ import {
   getInsuranceChallengesBody,
 } from "./records/challenge.records";
 import {
+  applyInsuranceBody,
   createInsuranceBody,
   insuranceBody,
 } from "./records/insurance.records";
@@ -238,4 +240,15 @@ export default Canister({
       }
     }
   ),
+
+  applyInsurance: update([applyInsuranceBody], Void, async (req) => {
+    try {
+      await applyInsurance(req.userId, req.insuranceId, insuranceDb, usersDb);
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message);
+      }
+      throw new Error("Internal server error!");
+    }
+  }),
 });

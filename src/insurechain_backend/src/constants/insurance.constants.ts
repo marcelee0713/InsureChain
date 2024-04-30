@@ -15,6 +15,7 @@ const insuranceData: insuranceType[] = [
     security for you and your loved ones.`,
     description:
       "Comprehensive health insurance coverage for individuals and families.",
+    requiredTokens: "50",
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857946/my-uploads/pexels-totalshape-2383010_tyxang.jpg",
     createdAt: "2024-04-22T00:00:00Z",
@@ -61,6 +62,7 @@ const insuranceData: insuranceType[] = [
     accident prevention. Our insurance plans are designed to reward responsible drivers while promoting safe driving habits. 
     With a commitment to protecting you and your vehicle, SafeDrive Insurance provides coverage options tailored to your needs, 
     ensuring peace of mind on the road.`,
+    requiredTokens: "45",
     description:
       "Auto insurance with a focus on safe driving and accident prevention.",
     image:
@@ -118,6 +120,7 @@ const insuranceData: insuranceType[] = [
      With a focus on providing peace of mind during your travels, our insurance plans cover a wide range of unexpected 
      events, including trip cancellations, medical emergencies, lost baggage, and more, ensuring you can explore the world 
      with confidence.`,
+    requiredTokens: "80",
     description: "Comprehensive travel insurance for individuals and families.",
     image:
       "https://res.cloudinary.com/dop8qsdej/image/upload/v1713857949/my-uploads/pexels-andreimike-1271619_qws6br.jpg",
@@ -158,6 +161,7 @@ const insuranceData: insuranceType[] = [
     longDescription: `PetCare Insurance provides comprehensive coverage for pets, including veterinary care and treatments.
      Our insurance plans are designed to protect your furry companions and provide financial assistance for medical expenses, 
      ensuring their health and well-being is always a top priority.`,
+    requiredTokens: "70",
     description:
       "Insurance coverage for pets, including veterinary care and treatments.",
     image:
@@ -208,6 +212,7 @@ const insuranceData: insuranceType[] = [
     longDescription: `HomeGuard Insurance provides comprehensive coverage for homeowners, offering protection 
     against property damage and liability. Our insurance plans are tailored to safeguard your home and belongings, 
     providing peace of mind and financial security for you and your family.`,
+    requiredTokens: "50",
     description:
       "Insurance coverage for homeowners, protecting against property damage and liability.",
     image:
@@ -248,6 +253,7 @@ const insuranceData: insuranceType[] = [
     longDescription: `FinanceWise Insurance offers comprehensive financial planning and investment insurance services. 
     Our services are designed to help individuals and families navigate their financial futures with confidence, providing 
     expert guidance and tailored insurance solutions to meet their needs.`,
+    requiredTokens: "60",
     description:
       "Comprehensive financial planning and investment insurance services.",
     image:
@@ -277,7 +283,7 @@ const insuranceData: insuranceType[] = [
         name: "Financial Health Challenge",
         description:
           "Create and stick to a budget to improve your financial health.",
-        tokenPrize: "20",
+        tokenPrize: "35",
         userStatus: [],
         createdAt: "2024-04-27T00:00:00Z",
       },
