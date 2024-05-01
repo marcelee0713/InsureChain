@@ -27,7 +27,7 @@ export const Filters = ({
   mode,
 }: props) => {
   const inputStyle =
-    "outline-none border bg-boxColor border-secondary px-3 py-2 w-[220px] text-black font-bold text-sm placeholder:text-black placeholder:font-light placeholder:text-sm rounded-lg";
+    "outline-none bg-boxColor px-3 py-2 w-[220px] text-primary font-bold text-sm placeholder:text-primary placeholder:font-light placeholder:text-sm rounded-lg";
 
   const isSolo = mode === "INPUT-ONLY";
   const isDuo = mode === "WITH-FILTER" && arr && element && onElementChange;

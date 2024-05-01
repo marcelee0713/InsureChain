@@ -14,8 +14,8 @@ export const FilterTile = ({
   arrayLength,
 }: props) => {
   const elementStyle = `${
-    selected ? "bg-secondary" : "bg-boxColor"
-  } cursor-pointer transition-color duration-300 ease-in-out hover:bg-secondary px-3 py-2`;
+    selected ? "bg-boxColor" : "bg-boxColor"
+  } cursor-pointer transition-color duration-300 ease-in-out hover:bg-white hover:text-boxColor px-3 py-2`;
 
   const firstElementStyle = elementStyle + " rounded-t-lg";
 

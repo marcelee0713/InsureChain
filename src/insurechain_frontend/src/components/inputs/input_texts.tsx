@@ -63,9 +63,9 @@ const InputText: React.FC<props> = ({
         type={inputType ?? "text"}
         id={label}
         autoComplete="off"
-        className={`${!errorCatch && "border border-secondary"} ${
-          errorCatch && "border-2 border-secondary"
-        } outline-none bg-transparent  px-3 text-accent font-normal rounded-lg h-[50px] font-openSans`}
+        className={`${!errorCatch && "border border-boxColor"} ${
+          errorCatch && "border-2 border-boxColor"
+        } outline-none bg-transparent  px-3 text-black font-normal rounded-lg h-[50px] font-openSans`}
         {...(formType === "SIGNIN"
           ? signInRegister(signInEnum)
           : signUpRegister(signUpEnum))}
@@ -114,23 +114,23 @@ const InputTextPassword: React.FC<passwordProps> = ({
           id={label}
           type={visiblePassword ? "text" : "password"}
           autoComplete="off"
-          className={`${!errorCatch && "border border-secondary"} ${
-            errorCatch && "border-2 border-secondary"
-          } outline-none bg-transparent px-3 text-accent font-normal w-full rounded-lg h-[50px] font-openSans`}
+          className={`${!errorCatch && "border border-boxColor"} ${
+            errorCatch && "border-2 border-boxColor"
+          } outline-none bg-transparent px-3 text-black font-normal w-full rounded-lg h-[50px] font-openSans`}
           {...(formType === "SIGNIN"
             ? signInRegister(signInEnum)
             : signUpRegister(signUpEnum))}
         />
         {!visiblePassword && (
           <FaEyeSlash
-            className="absolute right-0 mr-2 text-secondary"
+            className="absolute right-0 mr-2 text-boxColor"
             size={25}
             onClick={() => passwordSetVisible(true)}
           />
         )}
         {visiblePassword && (
           <FaEye
-            className="absolute right-0 mr-2 text-secondary"
+            className="absolute right-0 mr-2 text-boxColor"
             size={25}
             onClick={() => passwordSetVisible(false)}
           />

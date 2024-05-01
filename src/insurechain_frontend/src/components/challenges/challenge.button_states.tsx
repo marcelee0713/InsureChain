@@ -26,7 +26,7 @@ export const ChallengeButtonStates = ({
   const [isDisable, setOnDisable] = useState(false);
 
   const defaultStyle =
-    "border border-secondary text-xs font-bold rounded-xl flex items-center justify-center cursor-pointer hover:bg-black hover:text-primary transition-colors ";
+    "text-xs font-bold bg-primary text-boxColor rounded-xl flex items-center justify-center cursor-pointer hover:bg-boxColor border border-primary hover:text-primary transition-colors ";
 
   const cb: CallbacksInterface = {
     onLoading() {

@@ -57,7 +57,7 @@ export default {
         black: "#000000",
         secondary: "#ADB5BD",
         accent: "#6C757D",
-        boxColor: "#E9ECEF",
+        boxColor: "#2869CE",
       },
     },
   },

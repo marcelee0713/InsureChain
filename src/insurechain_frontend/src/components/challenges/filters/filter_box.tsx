@@ -10,13 +10,13 @@ interface props {
 
 export const FilterBox = ({ element, filterArr, onElementChange }: props) => {
   return (
-    <div className="group text-sm relative border border-secondary hover:border-none bg-boxColor px-3 py-2 w-[150px] text-black rounded-lg">
+    <div className="group text-sm relative hover:border-none bg-boxColor px-3 py-2 w-[150px] text-primary rounded-lg">
       <div className="flex items-center justify-between gap-2 rounded-lg cursor-pointer w-full">
         <div className={`font-bold`}>{element}</div>
         <FaCaretDown />
       </div>
       <ul
-        className={`font-bold hover:border hover:border-secondary absolute w-full left-0 top-0 flex flex-col transition-opacity rounded-lg -z-10 opacity-0 group-hover:z-10 group-hover:opacity-100`}
+        className={`font-bold absolute w-full left-0 top-0 flex flex-col transition-opacity rounded-lg -z-10 opacity-0 group-hover:z-10 group-hover:opacity-100`}
       >
         {filterArr.map((val, i) => {
           const selected: boolean =

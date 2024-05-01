@@ -13,8 +13,8 @@ import { AuthLoading } from "../../components/auth/loading";
 import { AuthStates } from "../../components/auth/states";
 
 const Signup = () => {
-  const tailwindStyle = `bg-boxColor border-secondary border rounded-lg p-[36px] font-openSans flex flex-col 
-  lg:min-w-[488px] w-[450px] sm:min-w-[200px] min-h-[700px] border-opacity-20`;
+  const tailwindStyle = `bg-primary border-boxColor border rounded-lg p-[36px] font-openSans flex flex-col 
+  lg:min-w-[488px] w-[450px] sm:min-w-[200px] min-h-[700px]`;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -144,7 +144,7 @@ const Signup = () => {
             formType="SIGNUP"
           />
 
-          <div className="text-accent font-openSans mb-2 text-xs mt-2 cursor-pointer hover:underline w-full">
+          <div className="text-boxColor font-openSans mb-2 text-xs mt-2 cursor-pointer hover:underline w-full">
             Note: Password must be at least 8 characters, at least one
             uppercase, number, and special characters
           </div>
@@ -152,12 +152,12 @@ const Signup = () => {
         <div className="flex flex-col gap-2 w-full ">
           <button
             type="submit"
-            className="bg-black font-openSans text-primary w-full font-bold py-3 rounded-lg my-5 hover:bg-secondary hover:text-primary"
+            className="bg-boxColor text-primary hover:bg-primary hover:text-boxColor border hover:border-boxColor font-bold py-3 rounded-lg my-5 w-full font-openSans transition-colors duration-500 ease-in-out"
           >
             Sign Up
           </button>
-          <hr className="border-secondary" />
-          <p className="text-xs py-4 font-openSans text-center">
+          <hr className="border-boxColor" />
+          <p className="text-xs py-4 font-openSans text-center text-boxColor">
             By creating an account you agree to our{" "}
             <strong className="cursor-pointer hover:underline">
               Terms of Agreement{" "}

@@ -19,14 +19,14 @@ const LandingPage = () => {
 
       <div className="flex w-full justify-evenly items-center ">
         <DescriptionBox
-          imageUrl="/images/Challenges.png"
+          imageUrl="/images/invest.svg"
           imageAlt="Challenge Image"
           name="Challenges"
           desc={PROJECT_DESC.CHALLENGES_DESC}
         />
 
         <DescriptionBox
-          imageUrl="images/EarnInsurance.png"
+          imageUrl="images/receipt.svg"
           imageAlt="Insurance Image"
           name="Have an Insurance"
           desc={PROJECT_DESC.EARN_DESC}

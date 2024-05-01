@@ -17,7 +17,7 @@ interface props {
 
 export const ChallengeBox = (data: props) => {
   return (
-    <div className="flex gap-2 justify-between items-center h-[110px] bg-boxColor border border-secondary rounded-md shadow-lg py-5 px-6">
+    <div className="flex gap-2 justify-between items-center h-[110px] bg-boxColor text-primary border rounded-md shadow-lg py-5 px-6">
       <div className="flex flex-col text-sm">
         <div className="flex gap-[2px] text-[16px]">
           <Link

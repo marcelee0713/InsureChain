@@ -25,10 +25,10 @@ export const NavigationItems = ({ icon, redirectTo, text, onClick }: props) => {
     return (
       <div
         onClick={onClick}
-        className="flex items-center p-2 text-black hover:bg-secondary group transition-all duration-200 cursor-pointer"
+        className="flex items-center p-2 text-black hover:bg-boxColor hover:bg-opacity-60 group transition-all duration-200 cursor-pointer rounded-lg"
       >
-        <CustomIcon icon={icon} />
-        <span className="flex-1 ms-3 whitespace-nowrap group-hover:text-primary font-openSans">
+        <CustomIcon icon={icon} className="group-hover:text-primary" />
+        <span className="flex-1 ms-3 whitespace-nowrap group-hover:text-primary font-openSans ">
           {text}
         </span>
       </div>
@@ -41,11 +41,11 @@ export const NavigationItems = ({ icon, redirectTo, text, onClick }: props) => {
       onClick={onClick}
       className={({ isActive }) =>
         isActive
-          ? "flex items-center p-2 justify-center bg-black text-primary  hover:bg-black group transition-all duration-200 cursor-pointer"
-          : "flex items-center p-2 text-black hover:bg-secondary group transition-all duration-200 cursor-pointer"
+          ? "flex items-center p-2 justify-center bg-boxColor text-primary  hover:bg-boxColor group transition-all duration-200 cursor-pointer rounded-lg"
+          : "flex items-center p-2 text-black hover:bg-boxColor hover:bg-opacity-60 group transition-all duration-200 cursor-pointer rounded-lg"
       }
     >
-      <CustomIcon icon={icon} />
+      <CustomIcon icon={icon} className="group-hover:text-primary" />
       <span className="flex-1 ms-3 whitespace-nowrap group-hover:text-primary font-openSans">
         {text}
       </span>

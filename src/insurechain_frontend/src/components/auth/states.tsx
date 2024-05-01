@@ -27,10 +27,10 @@ export const AuthStates = (states: props) => {
       <img src={image} alt={states.alt} className="object-cover" />
 
       <div className="flex flex-col justify-center items-center gap-2 font-openSans">
-        <p className="text-black font-bold text-center font-openSans">
+        <p className="text-boxColor font-bold text-center font-openSans">
           {states.header}
         </p>
-        <p className="text-center font-openSans">{states.desc}</p>
+        <p className="text-center font-openSans text-boxColor">{states.desc}</p>
 
         <ButtonStates {...states} />
       </div>

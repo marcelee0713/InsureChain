@@ -101,7 +101,7 @@ const applyInsurance = async (
         }
       }
     } else {
-      throw new Error("Not enought tokens!");
+      throw new Error("Not enough tokens!");
     }
   } catch (err) {
     if (err instanceof Error) {
