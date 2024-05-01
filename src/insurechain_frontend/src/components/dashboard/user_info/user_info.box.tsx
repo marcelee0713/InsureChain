@@ -10,11 +10,11 @@ interface props {
 }
 
 interface CustomIconProps extends IconBaseProps {
-  icon: IconType; // Type for specifying which icon to display
+  icon: IconType;
 }
 
 const CustomIcon = ({ icon, ...rest }: CustomIconProps) => {
-  const IconComponent = icon; // Dynamically select the icon component based on the prop
+  const IconComponent = icon;
 
   return <IconComponent {...rest} />;
 };
@@ -30,7 +30,7 @@ export const UserInfoBox = ({
   const newWidth = width ? width : "w-full";
 
   const defaultStyle =
-    "rounded-lg bg-boxColor border border-secondary text-black px-8 py-5 flex gap-4";
+    "rounded-lg bg-boxColor text-primary px-8 py-5 flex gap-4";
 
   return (
     <div className={`${defaultStyle} h-full items-center ${newWidth}`}>

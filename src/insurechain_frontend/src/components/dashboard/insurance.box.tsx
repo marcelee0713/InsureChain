@@ -39,13 +39,13 @@ export const InsuranceBox = ({
       className={`flex flex-col cursor-pointer bg-cover rounded-lg h-[400px] group shadow-lg`}
     >
       <div className="flex-1 flex flex-col bg-black opacity-50 rounded-t-lg items-center justify-center">
-        <h1 className="font-bold text-xl opacity-0 duration-300 transition-opacity text-white group-hover:opacity-100">
+        <h1 className="font-bold text-xl opacity-0 duration-300 transition-opacity text-primary group-hover:opacity-100">
           View more
         </h1>
       </div>
       <div
-        className="h-[150px] flex flex-col gap-2 text-white bg-black rounded-b-lg py-2 px-4 border-x border-b
-       border-accent opacity-50 duration-700 transition-all group-hover:bg-white group-hover:opacity-100 group-hover:text-black"
+        className="h-[150px] flex flex-col gap-2 text-primary bg-black rounded-b-lg py-2 px-4
+       opacity-50 duration-700 transition-all group-hover:bg-boxColor group-hover:opacity-100"
       >
         <div className="flex flex-col gap-1">
           <h1 className="font-bold text-xl">{name}</h1>

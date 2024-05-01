@@ -1,9 +1,14 @@
+import { useState } from "react";
 import {
   ChallengesType,
   InsuranceType,
 } from "../../interfaces/insurance.interface";
 import { ChallengesStates } from "../challenges/challenge.states";
+import { Modal } from "../modals/modal";
 import { Error, Loading } from "../univeral_states/states";
+import { ModalMode } from "../../types/modal";
+import { applyInsurance } from "../../api/fetchers/insurance.fetchers";
+import { CallbacksInterface } from "../../api/calls/auth.callbacks";
 
 interface props {
   data: InsuranceType | undefined;
@@ -26,6 +31,40 @@ export const InsuranceInfo = ({
   uid,
   challengeKey,
 }: props) => {
+  const [modal, setModal] = useState(false);
+  const [text, setText] = useState("");
+  const [subText, setSubText] = useState("");
+  const [mode, setMode] = useState<ModalMode>("CONFIRMATION");
+  const [onClick, setOnClick] = useState<VoidFunction>();
+  const [canClickOutside, setCanClickOutside] = useState(true);
+
+  const cb: CallbacksInterface = {
+    onLoading() {
+      setCanClickOutside(false);
+      setMode("LOADING");
+    },
+
+    onError(result) {
+      setCanClickOutside(true);
+      setMode("ERROR");
+      setText("Something went wrong!");
+      setSubText(result);
+      setOnClick(() => () => {
+        setModal(false);
+      });
+    },
+
+    onSuccess(result) {
+      setCanClickOutside(true);
+      setMode("SUCCESS");
+      setText("Success");
+      setSubText(result);
+      setOnClick(() => () => {
+        setModal(false);
+      });
+    },
+  };
+
   if (isLoading || loadingChallenges)
     return <Loading text="Fetching insurance data..." />;
 
@@ -47,6 +86,18 @@ export const InsuranceInfo = ({
           </p>
 
           <button
+            onClick={() => {
+              setModal(true);
+              setText("Confirmation");
+              setSubText(
+                `Are you sure you want to apply to ${data.name}? It requires ${data.requiredTokens} tokens.`
+              );
+              setMode("CONFIRMATION");
+              setOnClick(
+                () => async () =>
+                  await applyInsurance(uid, data.insuranceId, cb)
+              );
+            }}
             className="flex items-center justify-center text-base duration-300 text-white 
           bg-transparent h-10 w-[150px] border border-secondary rounded-lg animate-animfadeBelow hover:bg-white hover:text-black"
           >
@@ -90,6 +141,18 @@ export const InsuranceInfo = ({
           />
         </div>
       </div>
+
+      {modal && (
+        <Modal
+          text={text}
+          subText={subText}
+          setModal={setModal}
+          mode={mode}
+          onClose={() => setModal(false)}
+          onClick={onClick}
+          canCloseOutside={canClickOutside}
+        />
+      )}
     </div>
   );
 };

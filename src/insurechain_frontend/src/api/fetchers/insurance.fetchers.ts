@@ -1,6 +1,7 @@
 import { insurechain_backend } from "../../../../declarations/insurechain_backend";
 import { InsuranceType } from "../../interfaces/insurance.interface";
 import { catchErrors } from "../../utils/error.catcher";
+import { CallbacksInterface } from "../calls/auth.callbacks";
 
 const getInsurances = async (key: string): Promise<InsuranceType[]> => {
   try {
@@ -38,4 +39,27 @@ const getInsurance = async (key: string): Promise<InsuranceType> => {
   }
 };
 
-export { getInsurances, getInsurance };
+const applyInsurance = async (
+  userId: string,
+  insuranceId: string,
+  { onError, onLoading, onSuccess }: CallbacksInterface
+): Promise<void> => {
+  onLoading();
+
+  try {
+    await insurechain_backend.applyInsurance({
+      userId: userId,
+      insuranceId: insuranceId,
+    });
+
+    onSuccess("Successfully applied an insurance!");
+  } catch (err) {
+    if (err instanceof Error) {
+      onError(catchErrors(err));
+      throw new Error(catchErrors(err));
+    }
+    throw new Error("Internal server error");
+  }
+};
+
+export { getInsurances, getInsurance, applyInsurance };

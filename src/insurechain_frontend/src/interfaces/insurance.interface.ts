@@ -4,6 +4,7 @@ export interface InsuranceType {
   longDescription: string;
   description: string;
   image: string;
+  requiredTokens: string;
   benefits: benefitsType[];
   challenges: ChallengesType[];
   createdAt: string;

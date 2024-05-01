@@ -11,4 +11,9 @@ const insuranceBody = Record({
   insuranceId: text,
 });
 
-export { createInsuranceBody, insuranceBody };
+const applyInsuranceBody = Record({
+  insuranceId: text,
+  userId: text,
+});
+
+export { createInsuranceBody, insuranceBody, applyInsuranceBody };

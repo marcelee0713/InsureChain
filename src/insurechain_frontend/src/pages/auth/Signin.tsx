@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { insurechain_backend } from "../../../../declarations/insurechain_backend";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { catchErrors } from "../../utils/error.catcher";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { SignInFormData } from "../../types/types.auth";
@@ -15,8 +13,8 @@ import { AuthLoading } from "../../components/auth/loading";
 import { AuthStates } from "../../components/auth/states";
 
 const Signin = () => {
-  const tailwindStyle = `bg-boxColor border-secondary border rounded-lg p-[36px] font-openSans flex flex-col 
-  lg:min-w-[488px] w-[450px] sm:min-w-[200px] min-h-[500px] border-opacity-20`;
+  const tailwindStyle = `bg-primary border-boxColor border rounded-lg p-[36px] font-openSans flex flex-col 
+  lg:min-w-[488px] w-[450px] sm:min-w-[200px] min-h-[500px] `;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -110,7 +108,7 @@ const Signin = () => {
 
         <Link
           to={""}
-          className="text-accent font-openSans text-right mb-2 text-xs mt-2 cursor-pointer hover:underline w-fit self-end"
+          className="text-boxColor font-openSans text-right mb-2 text-xs mt-2 cursor-pointer hover:underline w-fit self-end"
         >
           Forgot Password?
         </Link>
@@ -118,15 +116,15 @@ const Signin = () => {
       <div className="flex flex-col gap-2 w-full ">
         <button
           type="submit"
-          className="bg-black text-primary font-bold py-3 rounded-lg my-5 hover:bg-secondary hover:text-primary w-full font-openSans"
+          className="bg-boxColor text-primary hover:bg-primary hover:text-boxColor border hover:border-boxColor font-bold py-3 rounded-lg my-5 w-full font-openSans transition-colors duration-500 ease-in-out"
         >
           Sign in
         </button>
-        <hr className="border-secondary" />
+        <hr className="border-boxColor" />
         <Link to="/auth/sign-up" className="w-full h-full">
           <button
             type="button"
-            className="border-secondary font-bold rounded-lg border py-3 my-5 w-full hover:bg-black hover:text-primary font-openSans"
+            className="border-boxColor text-boxColor font-bold rounded-lg border py-3 my-5 w-full hover:bg-boxColor hover:text-primary font-openSans transition-colors duration-500 ease-in-out"
           >
             Create an Account
           </button>
