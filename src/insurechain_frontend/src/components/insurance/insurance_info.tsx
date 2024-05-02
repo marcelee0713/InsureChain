@@ -9,6 +9,8 @@ import { Error, Loading } from "../univeral_states/states";
 import { ModalMode } from "../../types/modal";
 import { applyInsurance } from "../../api/fetchers/insurance.fetchers";
 import { CallbacksInterface } from "../../api/calls/auth.callbacks";
+import { BaseError, parseEther } from "viem";
+import { useSendTransaction } from "wagmi";
 
 interface props {
   data: InsuranceType | undefined;
@@ -31,6 +33,17 @@ export const InsuranceInfo = ({
   uid,
   challengeKey,
 }: props) => {
+  //TODO: In the backend make sure also take the balance of the user.
+  // And pass it to the applyInsurance route
+
+  // Also, challenges. Make sure to add a token whenever the user finished a challenge
+  // Also reduce the amount of the insurance company.
+
+  // Make sure to make the value even more smaller compare to ETH
+  // Like 20 tokens should be 0.020
+
+  const { isPending, sendTransaction } = useSendTransaction();
+
   const [modal, setModal] = useState(false);
   const [text, setText] = useState("");
   const [subText, setSubText] = useState("");
@@ -45,6 +58,7 @@ export const InsuranceInfo = ({
     },
 
     onError(result) {
+      setModal(true);
       setCanClickOutside(true);
       setMode("ERROR");
       setText("Something went wrong!");
@@ -55,6 +69,7 @@ export const InsuranceInfo = ({
     },
 
     onSuccess(result) {
+      setModal(true);
       setCanClickOutside(true);
       setMode("SUCCESS");
       setText("Success");
@@ -86,6 +101,7 @@ export const InsuranceInfo = ({
           </p>
 
           <button
+            disabled={isPending}
             onClick={() => {
               setModal(true);
               setText("Confirmation");
@@ -93,15 +109,37 @@ export const InsuranceInfo = ({
                 `Are you sure you want to apply to ${data.name}? It requires ${data.requiredTokens} tokens.`
               );
               setMode("CONFIRMATION");
-              setOnClick(
-                () => async () =>
-                  await applyInsurance(uid, data.insuranceId, cb)
-              );
+              setOnClick(() => async () => {
+                setModal(false);
+                sendTransaction(
+                  {
+                    to: `${data.address}` as `0x${string}`,
+                    value: parseEther(data.requiredTokens),
+                  },
+                  {
+                    async onSuccess() {
+                      setModal(true);
+                      await applyInsurance(uid, data.insuranceId, cb);
+                    },
+
+                    onError(error) {
+                      setModal(true);
+                      setCanClickOutside(true);
+                      setMode("ERROR");
+                      setText("Something went wrong!");
+                      setSubText((error as BaseError).shortMessage);
+                      setOnClick(() => () => {
+                        setModal(false);
+                      });
+                    },
+                  }
+                );
+              });
             }}
             className="flex items-center justify-center text-base duration-300 text-white 
           bg-transparent h-10 w-[150px] border border-secondary rounded-lg animate-animfadeBelow hover:bg-white hover:text-black"
           >
-            APPLY
+            {isPending ? "Confirming..." : "APPLY"}
           </button>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { getChallenge } from "../../../api/fetchers/challenges.fetchers";
 import { ChallengesType } from "../../../interfaces/insurance.interface";
 import { User } from "../../../interfaces/user.interface";
 import { formatDateFromTimestamp } from "../../../utils/formatDate";
-import { FaClock, FaCoins, FaMedal } from "react-icons/fa";
+import { FaClock, FaMedal } from "react-icons/fa";
 import { GiShrug } from "react-icons/gi";
 import { UserInfoBox } from "./user_info.box";
 
@@ -113,13 +113,6 @@ export const UserInfoContainer = ({ userData }: props) => {
           width="flex-1"
         />
       )}
-      <UserInfoBox
-        headText="Current Tokens"
-        subText={userData.token}
-        icon={FaCoins}
-        iconSize={50}
-        width="w-[300px]"
-      />
       {completedData ? (
         <UserInfoBox
           headText={`Latest Completed Challenge • ${completedData.name}`}

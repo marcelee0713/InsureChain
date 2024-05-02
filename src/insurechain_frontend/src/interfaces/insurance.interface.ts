@@ -8,6 +8,7 @@ export interface InsuranceType {
   benefits: benefitsType[];
   challenges: ChallengesType[];
   createdAt: string;
+  address: string;
 }
 
 export interface ChallengesType {
