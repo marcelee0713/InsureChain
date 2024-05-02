@@ -54,6 +54,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-22T00:00:00Z",
       },
     ],
+    address: "0xb61f8AAf2399845cc70830E48fd2B490720cA858",
   },
   {
     insuranceId: "ins2",
@@ -112,6 +113,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-23T00:00:00Z",
       },
     ],
+    address: "0x88E47Caee551819422Aff9BaDaaa50312Cf0E6C8",
   },
   {
     insuranceId: "ins3",
@@ -154,6 +156,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-24T00:00:00Z",
       },
     ],
+    address: "0xfB4D4d083F218f6715cb06AFcE87452754A56954",
   },
   {
     insuranceId: "ins4",
@@ -205,6 +208,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-25T00:00:00Z",
       },
     ],
+    address: "0x25c2979C8cE1D99ECB4F98Ab548b62D226B1151b",
   },
   {
     insuranceId: "ins5",
@@ -246,6 +250,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-26T00:00:00Z",
       },
     ],
+    address: "0x590FFc89c413cF6b8A2BAC1DA34737f69f20dfb5",
   },
   {
     insuranceId: "ins6",
@@ -298,6 +303,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-27T00:00:00Z",
       },
     ],
+    address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",
   },
 ];
 

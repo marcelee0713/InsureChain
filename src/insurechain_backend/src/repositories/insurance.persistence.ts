@@ -25,6 +25,7 @@ const createInsurance = async (
       name: insuranceName,
       longDescription: longDesc,
       description,
+      address: "",
       image,
       requiredTokens: "50",
       benefits: [],
