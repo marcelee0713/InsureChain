@@ -1,5 +1,5 @@
 service: () -> {
-    applyInsurance: (record {userId:text; insuranceId:text}) -> ();
+    applyInsurance: (record {userId:text; insuranceId:text; tokenBalance:text}) -> ();
     createChallenge: (record {challenge:text; tokenPrize:text; insuranceId:text; name:text; description:text}) -> ();
     createInsurance: (record {insuranceName:text; description:text; imageUrl:text; longDescription:text}) -> ();
     gainToken: (record {token:text; userId:text}) -> ();

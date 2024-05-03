@@ -21,6 +21,8 @@ export const InsuranceStates = ({ data, loading, error }: props) => {
     return <OnEmpty />;
   }
 
+  console.log(`https://${window.location.hostname}`);
+
   return (
     <div className="flex-1 grid grid-cols-myGridTemplate gap-5">
       {data.map((val) => (

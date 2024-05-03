@@ -10,7 +10,8 @@ import { ModalMode } from "../../types/modal";
 import { applyInsurance } from "../../api/fetchers/insurance.fetchers";
 import { CallbacksInterface } from "../../api/calls/auth.callbacks";
 import { BaseError, parseEther } from "viem";
-import { useSendTransaction } from "wagmi";
+import { useAccount, useBalance, useSendTransaction } from "wagmi";
+import { formatBalance } from "../../utils/formatBalance";
 
 interface props {
   data: InsuranceType | undefined;
@@ -33,14 +34,11 @@ export const InsuranceInfo = ({
   uid,
   challengeKey,
 }: props) => {
-  //TODO: In the backend make sure also take the balance of the user.
-  // And pass it to the applyInsurance route
+  const account = useAccount();
 
-  // Also, challenges. Make sure to add a token whenever the user finished a challenge
-  // Also reduce the amount of the insurance company.
-
-  // Make sure to make the value even more smaller compare to ETH
-  // Like 20 tokens should be 0.020
+  const balance = useBalance({
+    address: account.address,
+  });
 
   const { isPending, sendTransaction } = useSendTransaction();
 
@@ -111,15 +109,24 @@ export const InsuranceInfo = ({
               setMode("CONFIRMATION");
               setOnClick(() => async () => {
                 setModal(false);
+                const smallerValuePrice = parseInt(data.requiredTokens) / 1000;
+                const totalPrice = smallerValuePrice.toString();
                 sendTransaction(
                   {
                     to: `${data.address}` as `0x${string}`,
-                    value: parseEther(data.requiredTokens),
+                    value: parseEther(totalPrice),
                   },
                   {
                     async onSuccess() {
-                      setModal(true);
-                      await applyInsurance(uid, data.insuranceId, cb);
+                      if (account && balance.data) {
+                        setModal(true);
+                        await applyInsurance(
+                          uid,
+                          data.insuranceId,
+                          formatBalance(balance.data.value),
+                          cb
+                        );
+                      }
                     },
 
                     onError(error) {

@@ -13,6 +13,7 @@ interface props {
   finishedAt?: string;
   status: string;
   challengeKey: string;
+  address: string;
 }
 
 export const ChallengeBox = (data: props) => {
@@ -44,6 +45,8 @@ export const ChallengeBox = (data: props) => {
         insuranceId={data.insuranceId}
         uid={data.uid}
         challengeKey={data.challengeKey}
+        address={data.address}
+        tokenPrize={data.tokenPrize}
       />
     </div>
   );

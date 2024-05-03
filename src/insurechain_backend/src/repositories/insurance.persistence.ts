@@ -76,33 +76,21 @@ const getInsurance = async (
 
 const applyInsurance = async (
   userId: string,
+  currentBalance: string,
   insuranceId: string,
   insuranceDb: insuranceType[],
   userDb: userType[]
 ): Promise<void> => {
   try {
-    const user = await getUser(userId, userDb);
+    await getUser(userId, userDb);
 
     const insurance = await getInsurance(insuranceId, insuranceDb);
 
-    const currentToken = parseInt(user.token);
-    const costToApply = parseInt(insurance.requiredTokens);
+    const currentToken = parseInt(currentBalance);
+    const costToApply = parseInt(insurance.requiredTokens) / 1000;
 
-    if (currentToken >= costToApply) {
-      let tokenResult = currentToken - costToApply;
-
-      if (tokenResult < 0) {
-        tokenResult = 0;
-      }
-
-      for (let i = 0; i < userDb.length; i++) {
-        if (userDb[i].uid === userId) {
-          userDb[i].token = tokenResult.toString();
-          break;
-        }
-      }
-    } else {
-      throw new Error("Not enough tokens!");
+    if (currentToken <= costToApply) {
+      throw new Error("Not enough balance!");
     }
   } catch (err) {
     if (err instanceof Error) {
