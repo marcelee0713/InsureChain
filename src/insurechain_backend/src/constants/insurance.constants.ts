@@ -1,7 +1,4 @@
-import {
-  challengesType,
-  insuranceType,
-} from "../interfaces/insurance.interface";
+import { insuranceType } from "../interfaces/insurance.interface";
 import { generateUID } from "../utils/uid.generator";
 
 const insuranceData: insuranceType[] = [
@@ -38,6 +35,7 @@ const insuranceData: insuranceType[] = [
     ],
     challenges: [
       {
+        address: "0xb61f8AAf2399845cc70830E48fd2B490720cA858",
         challengesId: "randomChallengeId12346",
         insuranceId: "ins1",
         name: "Healthy Habits Challenge",
@@ -88,6 +86,7 @@ const insuranceData: insuranceType[] = [
     ],
     challenges: [
       {
+        address: "0x88E47Caee551819422Aff9BaDaaa50312Cf0E6C8",
         challengesId: generateUID(),
         insuranceId: "ins2",
         name: "Defensive Driving Challenge",
@@ -103,6 +102,7 @@ const insuranceData: insuranceType[] = [
         createdAt: "2024-04-23T00:00:00Z",
       },
       {
+        address: "0x88E47Caee551819422Aff9BaDaaa50312Cf0E6C8",
         challengesId: generateUID(),
         insuranceId: "ins2",
         name: "Mileage Tracker Challenge",
@@ -154,6 +154,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "25",
         userStatus: [],
         createdAt: "2024-04-24T00:00:00Z",
+        address: "0xfB4D4d083F218f6715cb06AFcE87452754A56954",
       },
     ],
     address: "0xfB4D4d083F218f6715cb06AFcE87452754A56954",
@@ -197,6 +198,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "15",
         userStatus: [],
         createdAt: "2024-04-25T00:00:00Z",
+        address: "0x25c2979C8cE1D99ECB4F98Ab548b62D226B1151b",
       },
       {
         challengesId: generateUID(),
@@ -206,6 +208,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "10",
         userStatus: [],
         createdAt: "2024-04-25T00:00:00Z",
+        address: "0x25c2979C8cE1D99ECB4F98Ab548b62D226B1151b",
       },
     ],
     address: "0x25c2979C8cE1D99ECB4F98Ab548b62D226B1151b",
@@ -248,6 +251,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "15",
         userStatus: [],
         createdAt: "2024-04-26T00:00:00Z",
+        address: "0x590FFc89c413cF6b8A2BAC1DA34737f69f20dfb5",
       },
     ],
     address: "0x590FFc89c413cF6b8A2BAC1DA34737f69f20dfb5",
@@ -291,6 +295,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "35",
         userStatus: [],
         createdAt: "2024-04-27T00:00:00Z",
+        address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",
       },
       {
         challengesId: generateUID(),
@@ -301,6 +306,7 @@ const insuranceData: insuranceType[] = [
         tokenPrize: "10",
         userStatus: [],
         createdAt: "2024-04-27T00:00:00Z",
+        address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",
       },
     ],
     address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",

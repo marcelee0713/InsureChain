@@ -34,17 +34,14 @@ const devNetwork = defineChain({
   },
 });
 
-// 0. Setup queryClient
 const queryClient = new QueryClient();
 
-// 1. Get projectId at https://cloud.walletconnect.com
 const projectId = import.meta.env.VITE_REACT_APP_PROJECT_ID as string;
 
-// 2. Create wagmiConfig
 const metadata = {
   name: "InsureChain Web3Modal",
   description: "Web3Modal for InsureChain",
-  url: import.meta.env.VITE_URL as string, // origin must match your domain & subdomain
+  url: `https://${window.location.hostname}`, // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
@@ -54,17 +51,22 @@ const config = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
+  enableCoinbase: false,
+  enableInjected: false,
+  enableWalletConnect: false,
 });
 
 createWeb3Modal({
+  defaultChain: mainnet,
+  wagmiConfig: config,
+  projectId,
+  enableWalletFeatures: false,
+  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  allWallets: "HIDE",
   themeVariables: {
     "--w3m-color-mix": "#1E2124",
     "--w3m-color-mix-strength": 40,
   },
-  wagmiConfig: config,
-  projectId,
-  enableAnalytics: true, // Optional - defaults to your Cloud configuration
-  enableOnramp: true, // Optional - false as default
 });
 
 const rootElement = document.getElementById("root");

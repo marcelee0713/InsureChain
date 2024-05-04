@@ -42,6 +42,7 @@ const getInsurance = async (key: string): Promise<InsuranceType> => {
 const applyInsurance = async (
   userId: string,
   insuranceId: string,
+  balance: string,
   { onError, onLoading, onSuccess }: CallbacksInterface
 ): Promise<void> => {
   onLoading();
@@ -50,6 +51,7 @@ const applyInsurance = async (
     await insurechain_backend.applyInsurance({
       userId: userId,
       insuranceId: insuranceId,
+      tokenBalance: balance,
     });
 
     onSuccess("Successfully applied an insurance!");

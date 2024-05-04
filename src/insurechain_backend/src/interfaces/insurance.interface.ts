@@ -19,6 +19,7 @@ export interface challengesType {
   tokenPrize: string;
   userStatus: userStatus[];
   createdAt: string;
+  address: string;
 }
 
 export interface userStatus {
@@ -32,4 +33,4 @@ export interface benefitsType {
   description: string;
 }
 
-export type challengeStatus = "ON-GOING" | "FINISHED";
+export type challengeStatus = "ON-GOING" | "PENDING" | "FINISHED";

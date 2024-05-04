@@ -36,6 +36,7 @@ const createChallenge = async (
       name,
       description,
       tokenPrize,
+      address: insurance.address,
       userStatus: [],
       createdAt: Date.now().toString(),
     };

@@ -14,6 +14,7 @@ const insuranceBody = Record({
 const applyInsuranceBody = Record({
   insuranceId: text,
   userId: text,
+  tokenBalance: text,
 });
 
 export { createInsuranceBody, insuranceBody, applyInsuranceBody };

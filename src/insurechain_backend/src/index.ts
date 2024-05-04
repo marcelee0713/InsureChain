@@ -243,7 +243,13 @@ export default Canister({
 
   applyInsurance: update([applyInsuranceBody], Void, async (req) => {
     try {
-      await applyInsurance(req.userId, req.insuranceId, insuranceDb, usersDb);
+      await applyInsurance(
+        req.userId,
+        req.tokenBalance,
+        req.insuranceId,
+        insuranceDb,
+        usersDb
+      );
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);

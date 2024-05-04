@@ -19,8 +19,6 @@ const UpdateChallenge = async (
 
     if (data.newStatus === "FINISHED") {
       await insurechain_backend.gainToken({ token: res, userId: data.userId });
-
-      console.log("Gained Token: " + res);
     }
 
     onSuccess("Success!");
