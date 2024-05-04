@@ -2,6 +2,8 @@
 
 InsureChain is a decentralized platform revolutionizing insurance accessibility and engagement. Users interact with insurance products through gamified challenges, earning tokens for completion.
 
+[Live Preview](https://u5vvv-oyaaa-aaaak-qigka-cai.icp0.io/)
+
 ## Introduction
 
 InsureChain serves both new and established insurance companies, as well as consumers, by providing a simplified, engaging platform for insurance interaction. Users can earn tokens through gamified challenges and apply them directly toward insurance contracts, enhancing accessibility and participation in the insurance marketplace.
