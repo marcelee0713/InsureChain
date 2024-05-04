@@ -4,16 +4,10 @@ import { Error, Loading } from "../../univeral_states/states";
 import { User } from "../../../interfaces/user.interface";
 import { getUser } from "../../../api/fetchers/user.fetcher";
 import { UserInfoContainer } from "./user_info.container";
-import { type BaseError, useSendTransaction } from "wagmi";
-import { parseEther } from "viem";
+import { useAccount } from "wagmi";
 
 export const UserInfo = () => {
-  const {
-    data: hash,
-    isPending,
-    sendTransaction,
-    error,
-  } = useSendTransaction();
+  const { address, isConnecting, isDisconnected } = useAccount();
 
   const {
     data: userData,
@@ -27,12 +21,26 @@ export const UserInfo = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex gap-2">
-        <PageDesciption pageName={`Welcome, ${userData.username}`} />
-        <div className="animate-animfadeLeftSide">
-          <w3m-button />
+      <div className="flex flex-col gap-1">
+        <div className="flex gap-2">
+          <PageDesciption pageName={`Welcome, ${userData.username}`} />
+          <div className="animate-animfadeLeftSide">
+            <w3m-button label="Connect Metamask" />
+          </div>
         </div>
+        {isDisconnected && (
+          <div className="text-sm animate-animfadeLeftSide">
+            Don't have Metamask?{" "}
+            <a
+              className="font-bold hover:underline"
+              href="https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"
+            >
+              Click here!
+            </a>
+          </div>
+        )}
       </div>
+
       <UserInfoContainer userData={userData} />
     </div>
   );
