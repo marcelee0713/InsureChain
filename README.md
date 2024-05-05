@@ -88,7 +88,7 @@ $ dfx canister call insurechain_backend getInsurances
 
 ### Example 2
 
-Rather than manually typing every endpoint of our canister, why not let's use the Candid UI instead for interact our canister's [smart contracts](https://internetcomputer.org/how-it-works/smart-contracts-serve-the-web/).
+Rather than manually typing every endpoint of our canister, why not let's use the Candid UI instead to interact our canister's [smart contracts](https://internetcomputer.org/how-it-works/smart-contracts-serve-the-web/).
 
 The URL of Candid UI will be shown once you ran `npm run setup`.
 
@@ -111,7 +111,7 @@ Since this is a hackathon project we envision that we put more features in the f
 - [x] Brainstorming of the concept.
 - [x] UI/UX or mockup created by using figma.
 - [x] React and Azle Integration.
-- [x] Decentralize Wallet Integration by using [WalletConnect](walletconnect.com)
+- [x] Decentralized Wallet Integration by using [WalletConnect](walletconnect.com)
 - [ ] Insurance Company Dashboard
 - [ ] Admin Dashboard
 
@@ -121,8 +121,8 @@ This project is licensed under the MIT license, see LICENSE.md for details. See 
 
 ## Acknowledgements
 
-- [ICP Discord Server](https://discord.gg/sAhCT32H)
-- [Francis Gonzles](https://github.com/FGonzales-Dev)
+- [ICP Discord Server](https://discord.gg/sAhCT32H) 
+- [Francis Gonzales](https://github.com/FGonzales-Dev)
 
 ## References
 
