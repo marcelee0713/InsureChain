@@ -3,13 +3,7 @@ import { CallbacksInterface } from "../../api/calls/auth.callbacks";
 import { UpdateChallenge } from "../../api/calls/challenges.api";
 import { UpdateChallengeBody } from "../../interfaces/challenge.interface";
 import { useSWRConfig } from "swr";
-import {
-  useAccount,
-  usePrepareTransactionRequest,
-  useWriteContract,
-  useSendTransaction,
-} from "wagmi";
-import { BaseError, parseEther } from "viem";
+import { useAccount } from "wagmi";
 import { Modal } from "../modals/modal";
 
 interface buttonStatesProps {
@@ -28,22 +22,15 @@ export const ChallengeButtonStates = ({
   insuranceId,
   uid,
   challengeKey,
-  address,
-  tokenPrize,
 }: buttonStatesProps) => {
   // Also, challenges. Make sure to add a token whenever the user finished a challenge
   // Also reduce the amount of the insurance company.
 
   const [modal, setModal] = useState(false);
-  const { isPending, sendTransaction } = useSendTransaction();
   const account = useAccount();
-
-  const smallerValuePrice = parseInt(tokenPrize) / 1000;
-  const totalPrice = smallerValuePrice.toString();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [subText, setSubText] = useState("");
 
   const { mutate } = useSWRConfig();
   const [isDisable, setOnDisable] = useState(false);
@@ -72,7 +59,7 @@ export const ChallengeButtonStates = ({
     },
   };
 
-  if (loading || isPending) {
+  if (loading) {
     return (
       <div className="flex gap-1">
         Loading
@@ -110,7 +97,7 @@ export const ChallengeButtonStates = ({
     const body: UpdateChallengeBody = {
       challengeId: challengeId,
       insuranceId: insuranceId,
-      newStatus: "FINISHED",
+      newStatus: "PENDING",
       userId: uid,
     };
 
@@ -136,31 +123,23 @@ export const ChallengeButtonStates = ({
         <button
           disabled={isDisable}
           className={`${defaultStyle}` + "flex-1"}
-          onClick={() => {
-            sendTransaction(
-              {
-                to: account.address as `0x${string}`,
-                value: parseEther(totalPrice),
-              },
-              {
-                async onSuccess() {
-                  await UpdateChallenge(body, cb);
-                },
-                onError(error) {
-                  setModal(true);
-                  setSubText((error as BaseError).shortMessage);
-                },
-              }
-            );
+          onClick={async () => {
+            if (!account.address) {
+              setModal(true);
+              return;
+            }
+
+            body.walletAddress = account.address;
+            await UpdateChallenge(body, cb);
           }}
         >
-          FINISH
+          SUBMIT
         </button>
 
         {modal && (
           <Modal
             text={"Something went wrong!"}
-            subText={subText}
+            subText={"You are currently not connected to your Metamask Wallet!"}
             setModal={setModal}
             mode={"ERROR"}
             onClose={() => setModal(false)}

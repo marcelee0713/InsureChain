@@ -13,6 +13,11 @@ const HomeLayout = () => {
     onError() {
       window.location.href = "/auth/sign-in";
     },
+    onSuccess(data) {
+      if (data.isInsuranceCompany === "YES") {
+        window.location.href = "/insurance/dashboard";
+      }
+    },
   });
 
   if (isLoading) {
@@ -26,7 +31,7 @@ const HomeLayout = () => {
     );
   }
 
-  if (data) {
+  if (data && data.isInsuranceCompany === "NO") {
     return (
       <main
         id="default-layout"

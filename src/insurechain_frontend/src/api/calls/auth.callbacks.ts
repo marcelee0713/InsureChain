@@ -22,7 +22,9 @@ const signInCall = async (
       password: passwordValue,
     });
 
-    onSuccess(result);
+    const arrayText = `${result.uid}:${result.isInsuranceCompany}`;
+
+    onSuccess(arrayText);
   } catch (err) {
     if (err instanceof Error) {
       onError(catchErrors(err));
@@ -44,6 +46,7 @@ export const signUpCall = async (
       username: data.username,
       email: data.email,
       password: data.password,
+      isInsuranceCompany: data.isInsuranceCompany ? "YES" : "NO",
     });
 
     onSuccess("Registered");

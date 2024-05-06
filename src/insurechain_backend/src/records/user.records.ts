@@ -14,6 +14,7 @@ const signUpBody = Record({
   username: text,
   password: text,
   email: text,
+  isInsuranceCompany: text,
 });
 
 const signInBody = Record({
@@ -26,4 +27,9 @@ const gainTokenBody = Record({
   token: text,
 });
 
-export { signUpBody, signInBody, gainTokenBody, userBody };
+const signInResponse = Record({
+  uid: text,
+  isInsuranceCompany: text,
+});
+
+export { signUpBody, signInBody, gainTokenBody, userBody, signInResponse };

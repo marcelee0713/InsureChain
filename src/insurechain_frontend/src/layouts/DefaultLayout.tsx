@@ -22,9 +22,13 @@ const DefaultLayout = () => {
       }
 
       try {
-        await getUser(uid);
+        const user = await getUser(uid);
 
-        window.location.href = "/home/dashboard";
+        if (user.isInsuranceCompany === "NO") {
+          window.location.href = "/home/dashboard";
+        } else {
+          window.location.href = "/insurance/dashboard";
+        }
       } catch (err) {
         localStorage.removeItem("uid");
         setLoading(false);

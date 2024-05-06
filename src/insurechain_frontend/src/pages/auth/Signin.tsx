@@ -38,8 +38,17 @@ const Signin = () => {
     },
 
     onSuccess(result) {
-      localStorage.setItem("uid", result);
-      navigate("/home/dashboard", { replace: true });
+      const data = result.split(":");
+      const uid = data[0];
+      const isInsuranceCompany = data[1] === "YES";
+
+      localStorage.setItem("uid", uid);
+
+      if (isInsuranceCompany) {
+        navigate("/insurance/dashboard", { replace: true });
+      } else {
+        navigate("/home/dashboard", { replace: true });
+      }
       setError("");
       setLoading(false);
       setSuccess(true);

@@ -25,6 +25,7 @@ export interface challengesType {
 export interface userStatus {
   uid: string;
   status: challengeStatus; // AVAILABLE ON DEFAULT WHEN USER IS NOT PRESENT
+  walletAddress?: string;
   finishedAt?: string;
 }
 

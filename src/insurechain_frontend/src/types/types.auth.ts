@@ -10,7 +10,25 @@ export interface SignUpFormData {
   email: string;
   cfrmPassword: string;
   password: string;
+  isInsuranceCompany: boolean;
 }
+
+export interface CreateInsuranceFormData {
+  insuranceName: string;
+  description: string;
+  walletAddress: string;
+  imageUrl?: string;
+  requiredTokens: string;
+  longDescription: string;
+}
+
+export type CreateInsuranceEnums =
+  | "insuranceName"
+  | "description"
+  | "walletAddress"
+  | "imageUrl"
+  | "requiredTokens"
+  | "longDescription";
 
 export type SignInEnums = "username" | "password";
 

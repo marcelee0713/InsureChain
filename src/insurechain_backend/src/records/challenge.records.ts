@@ -14,6 +14,7 @@ const updateChallengeBody = Record({
   insuranceId: text,
   challengeId: text,
   challengeStatus: text,
+  walletAddress: text,
 });
 
 const createChallengeBody = Record({

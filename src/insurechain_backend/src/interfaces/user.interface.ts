@@ -5,12 +5,17 @@ export interface userType {
   password: string;
   token: string;
   activities: activities[];
+  isInsuranceCompany: isInsuranceType;
+  insuranceId?: string;
   createdAt: string;
 }
+
+export type isInsuranceType = "YES" | "NO";
 
 export interface userOnDbType {
   uid: string;
   password: string;
+  type: isInsuranceType;
 }
 
 export interface activities {

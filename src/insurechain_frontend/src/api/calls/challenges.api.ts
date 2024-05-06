@@ -15,6 +15,7 @@ const UpdateChallenge = async (
       challengeStatus: data.newStatus,
       insuranceId: data.insuranceId,
       userId: data.userId,
+      walletAddress: data.walletAddress ?? "",
     });
 
     if (data.newStatus === "FINISHED") {

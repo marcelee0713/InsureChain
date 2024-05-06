@@ -50,6 +50,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
+    defaultValues: { isInsuranceCompany: false },
   });
 
   if (success) {
