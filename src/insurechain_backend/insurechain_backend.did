@@ -1,7 +1,7 @@
 service: () -> {
     applyInsurance: (record {userId:text; insuranceId:text; tokenBalance:text}) -> ();
     createChallenge: (record {challenge:text; tokenPrize:text; insuranceId:text; name:text; description:text}) -> ();
-    createInsurance: (record {insuranceName:text; description:text; imageUrl:text; longDescription:text}) -> ();
+    createInsurance: (record {insuranceName:text; description:text; walletAddress:text; imageUrl:text; requiredTokens:text; longDescription:text}) -> ();
     gainToken: (record {token:text; userId:text}) -> ();
     getAllUsers: () -> (text) query;
     getAvailableChallenges: (record {userId:text}) -> (text) query;
@@ -12,6 +12,6 @@ service: () -> {
     getUser: (record {userId:text}) -> (text) query;
     getUserProfileData: (record {userId:text}) -> (text) query;
     signIn: (record {username:text; password:text}) -> (text);
-    signUp: (record {username:text; password:text; email:text}) -> ();
-    updateChallenge: (record {userId:text; insuranceId:text; challengeStatus:text; challengeId:text}) -> (text);
+    signUp: (record {username:text; password:text; email:text; isInsuranceCompany:text}) -> ();
+    updateChallenge: (record {userId:text; insuranceId:text; walletAddress:text; challengeStatus:text; challengeId:text}) -> (text);
 }

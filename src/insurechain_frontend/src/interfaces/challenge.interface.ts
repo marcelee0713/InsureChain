@@ -5,4 +5,5 @@ export interface UpdateChallengeBody {
   insuranceId: string;
   challengeId: string;
   newStatus: challengeStatus;
+  walletAddress?: string;
 }

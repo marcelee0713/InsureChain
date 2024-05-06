@@ -44,6 +44,7 @@ export const signUpCall = async (
       username: data.username,
       email: data.email,
       password: data.password,
+      isInsuranceCompany: "NO", // TODO: CHANGE
     });
 
     onSuccess("Registered");

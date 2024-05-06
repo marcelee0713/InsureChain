@@ -20,6 +20,7 @@ export const usersData: userType[] = [
         },
       },
     ],
+    isInsuranceCompany: false,
     createdAt: "1713372132979",
   },
   {
@@ -30,6 +31,19 @@ export const usersData: userType[] = [
     email: "janedoe@gmail.com",
     token: "0",
     activities: [],
+    isInsuranceCompany: false,
+    createdAt: "1713372142964",
+  },
+  {
+    uid: "BBn1n32FePsWCRU6",
+    username: "bendover",
+    password:
+      "28133fb4c03dec2167610884722e32f81e32ee79f092df75dc785af2513f3fb6.00000000000000000000000000000000",
+    email: "bendover@gmail.com",
+    token: "0",
+    activities: [],
+    isInsuranceCompany: false,
+    insuranceId: "ins3",
     createdAt: "1713372142964",
   },
 ];

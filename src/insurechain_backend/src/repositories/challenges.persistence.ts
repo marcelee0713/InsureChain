@@ -57,7 +57,8 @@ const updateChallengeStatus = async (
   challengesId: string,
   challengeStatus: string,
   insuranceDb: insuranceType[],
-  usersDb: userType[]
+  usersDb: userType[],
+  walletAddress?: string
 ): Promise<string> => {
   try {
     if (!userId || !insuranceId || !challengesId) {
@@ -88,9 +89,24 @@ const updateChallengeStatus = async (
       );
     }
 
-    if (challengeStatus === "FINISHED") {
+    if (challengeStatus === "PENDING") {
+      if (!walletAddress) throw new Error("Please provide a wallet address!");
+
       challenge.userStatus.forEach((val) => {
         if (val.uid === userId && val.status === "ON-GOING") {
+          const index = challenge.userStatus.indexOf(val);
+          challenge.userStatus[index].status = "PENDING";
+          challenge.userStatus[index].walletAddress = walletAddress;
+          return;
+        }
+      });
+
+      return "0";
+    }
+
+    if (challengeStatus === "FINISHED") {
+      challenge.userStatus.forEach((val) => {
+        if (val.uid === userId && val.status === "PENDING") {
           const index = challenge.userStatus.indexOf(val);
           challenge.userStatus[index].status = "FINISHED";
           challenge.userStatus[index].finishedAt = Date.now().toString();

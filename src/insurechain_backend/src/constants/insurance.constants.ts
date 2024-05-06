@@ -311,6 +311,19 @@ const insuranceData: insuranceType[] = [
     ],
     address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",
   },
+  {
+    insuranceId: "ins7",
+    name: "Test Insurance",
+    longDescription: `Testing Insurance Company Long Description`,
+    requiredTokens: "60",
+    description: "Testing Insurance Company Description",
+    image:
+      "https://res.cloudinary.com/dop8qsdej/image/upload/v1714925984/my-uploads/default_insurance-bg_qdbq5z.jpg",
+    createdAt: "2024-04-27T00:00:00Z",
+    benefits: [],
+    challenges: [],
+    address: "0xEA688A7DCAe0C6430d6bC3297A4ff0629798DB1B",
+  },
 ];
 
 export default insuranceData;

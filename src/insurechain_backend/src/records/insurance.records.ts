@@ -5,6 +5,8 @@ const createInsuranceBody = Record({
   description: text,
   longDescription: text,
   imageUrl: text,
+  walletAddress: text,
+  requiredTokens: text,
 });
 
 const insuranceBody = Record({

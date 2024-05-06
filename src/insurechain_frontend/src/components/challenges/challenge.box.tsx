@@ -37,6 +37,9 @@ export const ChallengeBox = (data: props) => {
           {data.finishedAt && (
             <span className="font-bold"> on {data.finishedAt}</span>
           )}
+          {data.status === "PENDING" && (
+            <span>• {data.insuranceName} will check on it.</span>
+          )}
         </div>
       </div>
       <ChallengeButtonStates

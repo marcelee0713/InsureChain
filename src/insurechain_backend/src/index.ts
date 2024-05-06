@@ -53,6 +53,7 @@ export default Canister({
         password: await hashPassword(req.password),
         email: req.email,
         token: "0",
+        isInsuranceCompany: req.isInsuranceCompany === "YES" ? true : false,
         createdAt: Date.now().toString(),
         activities: [],
       };
@@ -89,7 +90,8 @@ export default Canister({
         req.challengeId,
         req.challengeStatus,
         insuranceDb,
-        usersDb
+        usersDb,
+        req.walletAddress
       );
 
       return tokenPrize;
@@ -108,9 +110,10 @@ export default Canister({
         req.insuranceName,
         req.description,
         req.longDescription,
-        req.imageUrl,
         [],
-        insuranceDb
+        insuranceDb,
+        req.requiredTokens,
+        req.imageUrl
       );
     } catch (err) {
       if (err instanceof Error) {

@@ -14,6 +14,7 @@ const signUpBody = Record({
   username: text,
   password: text,
   email: text,
+  isInsuranceCompany: text,
 });
 
 const signInBody = Record({

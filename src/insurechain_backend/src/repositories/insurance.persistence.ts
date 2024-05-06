@@ -10,13 +10,14 @@ const createInsurance = async (
   insuranceName: string,
   description: string,
   longDesc: string,
-  image: string,
   challenges: challengesType[],
-  insuranceDb: insuranceType[]
+  insuranceDb: insuranceType[],
+  requiredTokens: string,
+  image?: string
 ): Promise<void> => {
   try {
-    if (!insuranceName || !description || !image) {
-      throw new Error("Invalid parameters. insuranceName, description, image");
+    if (!insuranceName || !description) {
+      throw new Error("Invalid parameters. insuranceName, description");
     }
 
     const insuranceId = generateUID();
@@ -26,8 +27,10 @@ const createInsurance = async (
       longDescription: longDesc,
       description,
       address: "",
-      image,
-      requiredTokens: "50",
+      image:
+        image ??
+        "https://res.cloudinary.com/dop8qsdej/image/upload/v1714925984/my-uploads/default_insurance-bg_qdbq5z.jpg",
+      requiredTokens,
       benefits: [],
       createdAt: Date.now().toString(),
       challenges: challenges.map((challenge) => ({

@@ -5,6 +5,8 @@ export interface userType {
   password: string;
   token: string;
   activities: activities[];
+  isInsuranceCompany: boolean;
+  insuranceId?: string;
   createdAt: string;
 }
 
