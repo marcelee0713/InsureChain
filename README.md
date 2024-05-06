@@ -197,7 +197,6 @@ Since this is a hackathon project we envision that we put more features in the f
 - [x] React and Azle Integration.
 - [x] Decentralized Wallet Integration by using [WalletConnect](walletconnect.com)
 - [x] Insurance Company Dashboard
-- [ ] Admin Dashboard
 
 ## License
 
