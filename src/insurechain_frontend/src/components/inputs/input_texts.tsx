@@ -8,6 +8,8 @@ import {
   SignUpEnums,
   RegisterType,
   EnumRegisterType,
+  CreateInsuranceFormData,
+  CreateInsuranceEnums,
 } from "../../types/types.auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { registerEnum, registerWithType } from "../../utils/form.types";
@@ -30,6 +32,14 @@ interface passwordProps {
   nameRegister: EnumRegisterType<AuthFormType>;
   visiblePassword?: boolean;
   passwordSetVisible: Dispatch<SetStateAction<boolean>>;
+}
+
+interface insuranceProps {
+  label: string;
+  inputType?: string;
+  register: UseFormRegister<CreateInsuranceFormData>;
+  errorCatch: FieldError | undefined;
+  nameRegister: CreateInsuranceEnums;
 }
 
 const InputText: React.FC<props> = ({
@@ -70,6 +80,51 @@ const InputText: React.FC<props> = ({
           ? signInRegister(signInEnum)
           : signUpRegister(signUpEnum))}
       />
+      <span
+        className={`font-openSans text-rose-400 duration-300 opacity-0 ease-in text-xs ${
+          errorCatch && `opacity-100`
+        }`}
+      >
+        {errorCatch && errorCatch.message}
+      </span>
+    </div>
+  );
+};
+
+const InputTextInsurance: React.FC<insuranceProps> = ({
+  errorCatch,
+  nameRegister,
+  label,
+  register,
+  inputType,
+}) => {
+  return (
+    <div className="flex flex-col gap-1 ">
+      <label htmlFor={label} className="font-bold text-black font-openSans">
+        {label}
+      </label>
+
+      {inputType === "textarea" ? (
+        <textarea
+          id={label}
+          autoComplete="off"
+          className={`${!errorCatch && "border border-boxColor"} ${
+            errorCatch && "border-2 border-boxColor"
+          } outline-none bg-transparent  p-3 text-black font-normal rounded-lg h-[80px] font-openSans`}
+          {...register(nameRegister)}
+        />
+      ) : (
+        <input
+          type={inputType ?? "text"}
+          id={label}
+          autoComplete="off"
+          className={`${!errorCatch && "border border-boxColor"} ${
+            errorCatch && "border-2 border-boxColor"
+          } outline-none bg-transparent  px-3 text-black font-normal rounded-lg h-[50px] font-openSans`}
+          {...register(nameRegister)}
+        />
+      )}
+
       <span
         className={`font-openSans text-rose-400 duration-300 opacity-0 ease-in text-xs ${
           errorCatch && `opacity-100`
@@ -147,4 +202,4 @@ const InputTextPassword: React.FC<passwordProps> = ({
   );
 };
 
-export { InputText, InputTextPassword };
+export { InputText, InputTextPassword, InputTextInsurance };

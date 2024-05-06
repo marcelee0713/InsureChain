@@ -13,6 +13,7 @@ import {
 import {
   gainTokenBody,
   signInBody,
+  signInResponse,
   signUpBody,
   userBody,
 } from "./records/user.records";
@@ -47,13 +48,17 @@ export default Canister({
     try {
       await validate(req.username, req.email, req.password, usersDb);
 
+      const type = req.isInsuranceCompany.trim().toLowerCase();
+
+      const isInsuranceCompany = type === "yes" || type === "true";
+
       const res: userType = {
         uid: generateUID(),
         username: req.username,
         password: await hashPassword(req.password),
         email: req.email,
         token: "0",
-        isInsuranceCompany: req.isInsuranceCompany === "YES" ? true : false,
+        isInsuranceCompany: isInsuranceCompany ? "YES" : "NO",
         createdAt: Date.now().toString(),
         activities: [],
       };
@@ -68,11 +73,14 @@ export default Canister({
     }
   }),
 
-  signIn: update([signInBody], text, async (req) => {
+  signIn: update([signInBody], signInResponse, async (req) => {
     try {
-      const uid = await validateLogin(req.username, req.password, usersDb);
+      const res = await validateLogin(req.username, req.password, usersDb);
 
-      return uid;
+      return {
+        isInsuranceCompany: res.isInsuranceCompany,
+        uid: res.uid,
+      };
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
@@ -113,6 +121,8 @@ export default Canister({
         [],
         insuranceDb,
         req.requiredTokens,
+        req.userId,
+        usersDb,
         req.imageUrl
       );
     } catch (err) {

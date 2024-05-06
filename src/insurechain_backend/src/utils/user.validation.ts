@@ -71,6 +71,7 @@ const validateExistence = (
 
   const obj: userOnDbType = {
     ...user,
+    type: user.isInsuranceCompany,
   };
 
   return obj;
@@ -105,7 +106,7 @@ const validateLogin = async (
   username: string,
   password: string,
   usersDb: userType[]
-): Promise<string> => {
+): Promise<{ uid: string; isInsuranceCompany: string }> => {
   try {
     validateUsername(username);
     validatePassword(password);
@@ -116,7 +117,10 @@ const validateLogin = async (
 
     if (!valid) throw new Error("User name or password is invalid!");
 
-    return user.uid;
+    return {
+      isInsuranceCompany: user.type,
+      uid: user.uid,
+    };
   } catch (err) {
     if (err instanceof Error) {
       throw new Error(err.message);

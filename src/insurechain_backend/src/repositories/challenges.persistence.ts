@@ -126,7 +126,10 @@ const updateChallengeStatus = async (
 
     if (challengeStatus === "CANCEL") {
       challenge.userStatus.forEach((val) => {
-        if (val.uid === userId && val.status === "ON-GOING") {
+        if (
+          (val.uid === userId && val.status === "PENDING") ||
+          (val.uid === userId && val.status === "ON-GOING")
+        ) {
           const index = challenge.userStatus.indexOf(val);
           challenge.userStatus.splice(index, 1);
 

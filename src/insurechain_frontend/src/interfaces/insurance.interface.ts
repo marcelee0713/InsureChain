@@ -26,6 +26,7 @@ export type userStatus = {
   uid: string;
   status: challengeStatus; // AVAILABLE ON DEFAULT WHEN USER IS NOT PRESENT
   finishedAt?: string;
+  walletAddress?: string;
 };
 
 export interface benefitsType {
@@ -34,3 +35,12 @@ export interface benefitsType {
 }
 
 export type challengeStatus = "ON-GOING" | "FINISHED" | "CANCEL" | "PENDING";
+
+export interface CreateInsuranceBody {
+  insuranceName: string;
+  description: string;
+  longDescription: string;
+  imageUrl?: string;
+  walletAddress: string;
+  requiredTokens: string;
+}

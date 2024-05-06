@@ -9,6 +9,8 @@ import Profile from "./pages/Profile";
 import Challenge from "./pages/Challenge";
 import Dashboard from "./pages/Dashboard";
 import InsurancePage from "./pages/InsurancePage";
+import InsuranceLandingPage from "./pages/insurance/InsuranceLandingPage";
+import InsuranceLayout from "./layouts/InsuranceCompanyLayout";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="challenges" element={<Challenge />} />
             <Route path="insurance/:id" element={<InsurancePage />} />
+          </Route>
+          <Route path="/insurance" element={<InsuranceLayout />}>
+            <Route index path="dashboard" element={<InsuranceLandingPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -5,6 +5,8 @@ export interface User {
   token: string;
   activities: Activities[];
   createdAt: string;
+  isInsuranceCompany: "YES" | "NO";
+  insuranceId?: string;
 }
 
 export interface Activities {

@@ -28,6 +28,7 @@ export const signUpSchema: ZodType<SignUpFormData> = z
       .min(1, { message: "Please provide an input" })
       .min(5, { message: "This field must contain at least 8 character(s)" })
       .max(20),
+    isInsuranceCompany: z.boolean(),
   })
   .refine((data) => data.password === data.cfrmPassword, {
     message: "Passwords do not match",
